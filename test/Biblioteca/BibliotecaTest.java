@@ -9,17 +9,19 @@ import org.junit.Before;
 public class BibliotecaTest {
 
     public Biblioteca biblioteca;
+    public Book book;
 
     @Before
     public void setUp() {
        biblioteca = new Biblioteca("Test");
-       biblioteca.bookList.add(new Book("Test", "Test Author", 2018));
+       book = new Book("Test", "Test Author", 2018);
+       biblioteca.bookList.add(book);
     }
 
     @Test
     public void checkIfCheckoutABookCorrectlyReturnsTrue(){
 
-        assertEquals(biblioteca.checkOut("Test", true));
+        assertEquals(biblioteca.checkOut(book), true);
     }
 
 }

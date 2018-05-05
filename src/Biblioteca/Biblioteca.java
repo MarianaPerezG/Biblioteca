@@ -13,6 +13,7 @@ public class Biblioteca {
     private static final String GOODBYE_MESSAGE = "Thank you for using Biblioteca. See you soon.";
     private static final String INVALID_OPTION_MESSAGE = "The option you have chosen is not a valid one, please try again";
     private static final String INVALID_MENU_MESSAGE = "The option you have chosen is not in the menu, please try again";
+    private static final String SELECT_MESSSAGE = "Select the book you want to checkout";
 
     public ArrayList<Book> bookList;
 
@@ -70,6 +71,7 @@ public class Biblioteca {
 
     }
 
+
     private void chooseOption(int option){
 
         if(option == 1){
@@ -80,7 +82,7 @@ public class Biblioteca {
             giveGoodBye();
         }
         else if(option == 3){
-            checkOut();
+            getOptionToCheckOut();
         }
         else if(option == 4){
             printMenu();
@@ -103,10 +105,15 @@ public class Biblioteca {
         }
     }
 
-    private void checkOut(){
+    private void getOptionToCheckOut(){
 
-        System.out.println("CHECKOUT BOOK");
+        System.out.println(SELECT_MESSSAGE);
 
+    }
+
+    public boolean checkOut(Book book){
+
+        return true;
     }
 
 }
