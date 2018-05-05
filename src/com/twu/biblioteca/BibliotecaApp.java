@@ -9,6 +9,8 @@ public class BibliotecaApp {
     public static void main(String[] args) {
 
         biblioteca = new Biblioteca("The Bangalore Public Library");
+        biblioteca.giveWelcome();
+
 
     }
 }
