@@ -12,6 +12,8 @@ public class Biblioteca {
 
     public Biblioteca(String name){
         this.name = name;
+        this.bookList = new ArrayList<Book>();
+
     }
 
     public void giveWelcome(){
