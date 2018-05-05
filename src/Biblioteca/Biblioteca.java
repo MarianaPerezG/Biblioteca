@@ -80,7 +80,7 @@ public class Biblioteca {
             giveGoodBye();
         }
         else if(option == 3){
-            checkOutBook();
+            checkOut();
         }
         else if(option == 4){
             printMenu();
@@ -96,12 +96,14 @@ public class Biblioteca {
         for (int i=0; i<this.bookList.size(); i++){
 
             Book book = this.bookList.get(i);
-            System.out.println(book.getName() + ' ' + book.getAuthor() + ' ' + book.getYearPublished());
+            if(book.isAvailable()){
+                System.out.println(book.getName() + ' ' + book.getAuthor() + ' ' + book.getYearPublished());
+            }
 
         }
     }
 
-    private void checkOutBook(){
+    private void checkOut(){
 
         System.out.println("CHECKOUT BOOK");
 

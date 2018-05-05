@@ -5,6 +5,7 @@ public class Book {
     private String name;
     private String author;
     private int yearPublished;
+    public boolean available = true;
 
     public Book(String name, String author, int yearPublished){
 
@@ -36,6 +37,10 @@ public class Book {
 
     public int getYearPublished(){
         return yearPublished;
+    }
+
+    public boolean isAvailable() {
+        return available;
     }
 
 }
