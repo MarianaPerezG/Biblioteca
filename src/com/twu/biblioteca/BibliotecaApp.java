@@ -12,6 +12,8 @@ public class BibliotecaApp {
         biblioteca = new Biblioteca("The Bangalore Public Library");
         addBooks(biblioteca);
         biblioteca.giveWelcome();
+        biblioteca.init();
+
 
     }
 
