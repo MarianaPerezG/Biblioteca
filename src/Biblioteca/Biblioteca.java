@@ -45,25 +45,24 @@ public class Biblioteca {
         System.out.println("(1) Book List");
         System.out.println("(2) Quit");
         System.out.println("(3) Checkout");
-        System.out.println("(4) Back to Menu");
 
     }
 
     private void manageInput(){
 
         while(true){
-            int input = getInput();
+            String input = getInput();
             chooseOption(input);
         }
 
     }
 
-    private int getInput(){
+    private String getInput(){
 
         Scanner scanner = new Scanner(System.in);
 
         try {
-            return scanner.nextInt();
+            return scanner.nextLine();
         } catch (InputMismatchException ex) {
             System.out.println(INVALID_OPTION_MESSAGE);
             return getInput();
@@ -71,21 +70,17 @@ public class Biblioteca {
 
     }
 
+    private void chooseOption(String option){
 
-    private void chooseOption(int option){
-
-        if(option == 1){
-            printBookList();
+        if(option.equals("1")){
+            printBookList(this.bookList);
             printMenu();
         }
-        else if(option == 2){
+        else if(option.equals("2")){
             giveGoodBye();
         }
-        else if(option == 3){
+        else if(option.equals("3")){
             getOptionToCheckOut();
-        }
-        else if(option == 4){
-            printMenu();
         }
         else{
             System.out.println(INVALID_MENU_MESSAGE);
@@ -93,11 +88,11 @@ public class Biblioteca {
 
     }
 
-    private void printBookList(){
+    private void printBookList(ArrayList books){
 
-        for (int i=0; i<this.bookList.size(); i++){
+        for (int i=0; i<books.size(); i++){
 
-            Book book = this.bookList.get(i);
+            Book book = (Book) books.get(i);
             if(book.isAvailable()){
                 System.out.println(book.getName() + ' ' + book.getAuthor() + ' ' + book.getYearPublished());
             }
@@ -108,12 +103,58 @@ public class Biblioteca {
     private void getOptionToCheckOut(){
 
         System.out.println(SELECT_MESSSAGE);
+        String selected = getInput();
+        checkOptionValidity(selected);
 
     }
 
-    public boolean checkOut(Book book){
+    public ArrayList<Book> getBooksInList(String selected){
 
-        return true;
+        ArrayList<Book> booksFound = new ArrayList<Book>();
+
+        for (Book book:bookList){
+
+            if (book.getName().toLowerCase().contains(selected.toLowerCase()) || book.getAuthor().toLowerCase().contains(selected.toLowerCase())){
+                booksFound.add(book);
+            }
+        }
+
+        return booksFound;
+    }
+
+    private void checkOptionValidity(String selected){
+
+        ArrayList<Book> selectedBooks = getBooksInList(selected);
+
+        if (selectedBooks.size() > 0){
+
+            if(selectedBooks.size() == 1){
+
+                checkOut(selectedBooks.get(0));
+
+            }else{
+                System.out.println("Please select between the options available:");
+                printBookList(selectedBooks);
+                getOptionToCheckOut();
+
+            }
+
+
+        }else{
+
+            System.out.println("There is no book with that description. Try again");
+            getOptionToCheckOut();
+
+        }
+
+
+    }
+
+    public void checkOut(Book book){
+
+        book.markTaken();
+        printMenu();
+
     }
 
 }

@@ -15,9 +15,9 @@ public class BookTest {
 
     @Test
     public void checkIfBookisAvaliable(){
-
         assertEquals(book.isAvailable(), true);
-
     }
+
+
 
 }

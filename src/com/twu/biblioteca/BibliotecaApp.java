@@ -21,6 +21,7 @@ public class BibliotecaApp {
         biblioteca.bookList.add(new Book("Living la vida loca", "Ricky Martin", 1989));
         biblioteca.bookList.add(new Book("What life is all about", "Spongebob squarepants", 2010));
         biblioteca.bookList.add(new Book("Something Random", "Kylie Jenner", 2018));
+        biblioteca.bookList.add(new Book("Liv Tyler ", "Liv Tyler", 1980));
 
     }
 }

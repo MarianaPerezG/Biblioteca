@@ -18,10 +18,15 @@ public class BibliotecaTest {
        biblioteca.bookList.add(book);
     }
 
-    @Test
-    public void checkIfCheckoutABookCorrectlyReturnsTrue(){
+//    @Test
+//    public void checkIfCheckoutABookCorrectlyReturnsTrue(){
+//
+//        assertEquals(biblioteca.checkOut(book), true);
+//    }
 
-        assertEquals(biblioteca.checkOut(book), true);
-    }
+//    @Test
+//    public void checkIfBookInList(){
+//        assertEquals(biblioteca.checkIfExist("Test"), true);
+//    }
 
 }

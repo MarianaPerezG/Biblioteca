@@ -43,4 +43,9 @@ public class Book {
         return available;
     }
 
+    public void markTaken(){
+
+        available = false;
+    }
+
 }
