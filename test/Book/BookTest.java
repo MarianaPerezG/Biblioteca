@@ -18,6 +18,14 @@ public class BookTest {
         assertEquals(book.isAvailable(), true);
     }
 
+    @Test
+    public void testMarkingTakenABook(){
+        assertEquals(book.isAvailable(), true);
+        book.markTaken();
+        assertEquals(book.isAvailable(), false);
+
+    }
+
 
 
 }

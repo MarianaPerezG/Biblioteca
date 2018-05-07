@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3de05fa-60f7-4792-8bc7-9f1acf42008d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/biblioteca/Biblioteca/Biblioteca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/biblioteca/Biblioteca/Biblioteca.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/biblioteca/Book/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/biblioteca/Book/Book.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/biblioteca/Helpers/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/biblioteca/Helpers/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/biblioteca/Helpers/Messages.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/biblioteca/Helpers/Messages.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/biblioteca/Biblioteca/BibliotecaTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/biblioteca/Biblioteca/BibliotecaTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Biblioteca/Biblioteca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Biblioteca/Biblioteca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Messages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Biblioteca/BibliotecaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/Biblioteca/BibliotecaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Book/BookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/Book/BookTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,17 +15,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Biblioteca.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Biblioteca.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Biblioteca/Biblioteca.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
+            <state relative-caret-position="150">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Biblioteca#0;class#Biblioteca#0" />
                 <element signature="method#giveGoodBye#0;class#Biblioteca#0" />
                 <element signature="method#init#0;class#Biblioteca#0" />
                 <element signature="method#chooseOption#0;class#Biblioteca#0" />
+                <element signature="method#getItemReference#0;class#Biblioteca#0" />
+                <element signature="method#manageResponseToCheckoutBook#0;class#Biblioteca#0" />
+                <element signature="method#manageResponseReturnBook#0;class#Biblioteca#0" />
                 <element signature="method#getBooksInList#0;class#Biblioteca#0" />
                 <element signature="method#checkOut#0;class#Biblioteca#0" />
                 <element signature="method#printBookList#0;class#Biblioteca#0" />
@@ -65,6 +59,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="BookTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/Book/BookTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#297#298#0" expanded="true" />
+                <element signature="e#351#352#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Book.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Book/Book.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -72,6 +80,8 @@
               <caret line="38" column="44" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
               <folding>
                 <element signature="method#Book#0;class#Book#0" />
+                <element signature="e#935#936#0" expanded="true" />
+                <element signature="e#968#969#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,17 +99,18 @@
       <file leaf-file-name="BibliotecaTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/Biblioteca/BibliotecaTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            <state relative-caret-position="600">
+              <caret line="78" column="1" lean-forward="true" selection-start-line="78" selection-start-column="1" selection-end-line="78" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#setUp#0;class#BibliotecaTest#0" />
                 <element signature="method#testThatGetBooksInListFindsABookThatAvailable#0;class#BibliotecaTest#0" />
                 <element signature="e#748#754#0" expanded="true" />
                 <element signature="method#testThatGetBooksListReturnsEmptyArrayListIfNotMatchFoundAvailable#0;class#BibliotecaTest#0" />
                 <element signature="e#1006#1012#0" expanded="true" />
+                <element signature="method#testThatGetBooksInListFindsABookThatAvailable#1;class#BibliotecaTest#0" />
                 <element signature="e#1268#1274#0" expanded="true" />
-                <element signature="e#647#648#0" expanded="true" />
-                <element signature="e#677#678#0" expanded="true" />
+                <element signature="method#testIfAnUnavailableCantBeCheckedOut#0;class#BibliotecaTest#0" />
                 <element signature="method#testIfPrintBooksListPrintsOnlyTheAvailable#0;class#BibliotecaTest#0" />
                 <element signature="e#1517#1523#0" expanded="true" />
               </folding>
@@ -123,7 +134,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/test/Book/BookTest.java" />
         <option value="$PROJECT_DIR$/src/Printer/Printer.java" />
         <option value="$PROJECT_DIR$/src/Printer/InteractionManager.java" />
         <option value="$PROJECT_DIR$/src/Printer/InputReader.java" />
@@ -135,6 +145,7 @@
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" />
         <option value="$PROJECT_DIR$/src/Book/Book.java" />
         <option value="$PROJECT_DIR$/src/Biblioteca/Biblioteca.java" />
+        <option value="$PROJECT_DIR$/test/Book/BookTest.java" />
       </list>
     </option>
   </component>
@@ -180,12 +191,6 @@
               <item name="biblioteca" type="b2602c69:ProjectViewProjectNode" />
               <item name="Biblioteca" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="biblioteca" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="biblioteca" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Biblioteca" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Helpers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -198,6 +203,12 @@
               <item name="Biblioteca" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="Biblioteca" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioteca" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Biblioteca" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="Book" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -233,7 +244,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.BibliotecaApp">
+  <component name="RunManager" selected="JUnit.BookTest">
     <configuration name="BibliotecaApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.BibliotecaApp" />
       <module name="biblioteca" />
@@ -351,10 +362,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BookTest" />
         <item itemvalue="Application.BibliotecaApp" />
         <item itemvalue="Application.livinglivingBibliotecaApp" />
         <item itemvalue="JUnit.BibliotecaTest" />
-        <item itemvalue="JUnit.BookTest" />
       </list>
     </recent_temporary>
   </component>
@@ -420,7 +431,7 @@
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.328877" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.1375" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.1375" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
       <window_info id="UI Designer" order="1" />
@@ -454,6 +465,9 @@
             <element signature="method#giveGoodBye#0;class#Biblioteca#0" />
             <element signature="method#init#0;class#Biblioteca#0" />
             <element signature="method#chooseOption#0;class#Biblioteca#0" />
+            <element signature="method#getItemReference#0;class#Biblioteca#0" />
+            <element signature="method#manageResponseToCheckoutBook#0;class#Biblioteca#0" />
+            <element signature="method#manageResponseReturnBook#0;class#Biblioteca#0" />
             <element signature="method#getBooksInList#0;class#Biblioteca#0" />
             <element signature="method#checkOut#0;class#Biblioteca#0" />
             <element signature="method#printBookList#0;class#Biblioteca#0" />
@@ -500,13 +514,14 @@
           <caret line="15" column="43" lean-forward="true" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#setUp#0;class#BibliotecaTest#0" />
             <element signature="method#testThatGetBooksInListFindsABookThatAvailable#0;class#BibliotecaTest#0" />
             <element signature="e#748#754#0" expanded="true" />
             <element signature="method#testThatGetBooksListReturnsEmptyArrayListIfNotMatchFoundAvailable#0;class#BibliotecaTest#0" />
             <element signature="e#1006#1012#0" expanded="true" />
+            <element signature="method#testThatGetBooksInListFindsABookThatAvailable#1;class#BibliotecaTest#0" />
             <element signature="e#1268#1274#0" expanded="true" />
-            <element signature="e#647#648#0" expanded="true" />
-            <element signature="e#677#678#0" expanded="true" />
+            <element signature="method#testIfAnUnavailableCantBeCheckedOut#0;class#BibliotecaTest#0" />
             <element signature="method#testIfPrintBooksListPrintsOnlyTheAvailable#0;class#BibliotecaTest#0" />
             <element signature="e#1517#1523#0" expanded="true" />
           </folding>
@@ -559,18 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/Book/BookTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#297#298#0" expanded="true" />
-            <element signature="e#351#352#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Helpers/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -578,32 +581,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/Biblioteca/BibliotecaTest.java">
+    <entry file="file://$PROJECT_DIR$/src/Helpers/Messages.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#testThatGetBooksInListFindsABookThatAvailable#0;class#BibliotecaTest#0" />
-            <element signature="e#748#754#0" expanded="true" />
-            <element signature="method#testThatGetBooksListReturnsEmptyArrayListIfNotMatchFoundAvailable#0;class#BibliotecaTest#0" />
-            <element signature="e#1006#1012#0" expanded="true" />
-            <element signature="e#1268#1274#0" expanded="true" />
-            <element signature="e#647#648#0" expanded="true" />
-            <element signature="e#677#678#0" expanded="true" />
-            <element signature="method#testIfPrintBooksListPrintsOnlyTheAvailable#0;class#BibliotecaTest#0" />
-            <element signature="e#1517#1523#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Book/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="38" column="44" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
-          <folding>
-            <element signature="method#Book#0;class#Book#0" />
-          </folding>
+        <state relative-caret-position="270">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
@@ -617,27 +598,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Helpers/Messages.java">
+    <entry file="file://$PROJECT_DIR$/test/Biblioteca/BibliotecaTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="600">
+          <caret line="78" column="1" lean-forward="true" selection-start-line="78" selection-start-column="1" selection-end-line="78" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setUp#0;class#BibliotecaTest#0" />
+            <element signature="method#testThatGetBooksInListFindsABookThatAvailable#0;class#BibliotecaTest#0" />
+            <element signature="e#748#754#0" expanded="true" />
+            <element signature="method#testThatGetBooksListReturnsEmptyArrayListIfNotMatchFoundAvailable#0;class#BibliotecaTest#0" />
+            <element signature="e#1006#1012#0" expanded="true" />
+            <element signature="method#testThatGetBooksInListFindsABookThatAvailable#1;class#BibliotecaTest#0" />
+            <element signature="e#1268#1274#0" expanded="true" />
+            <element signature="method#testIfAnUnavailableCantBeCheckedOut#0;class#BibliotecaTest#0" />
+            <element signature="method#testIfPrintBooksListPrintsOnlyTheAvailable#0;class#BibliotecaTest#0" />
+            <element signature="e#1517#1523#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Biblioteca/Biblioteca.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Biblioteca#0;class#Biblioteca#0" />
             <element signature="method#giveGoodBye#0;class#Biblioteca#0" />
             <element signature="method#init#0;class#Biblioteca#0" />
             <element signature="method#chooseOption#0;class#Biblioteca#0" />
+            <element signature="method#getItemReference#0;class#Biblioteca#0" />
+            <element signature="method#manageResponseToCheckoutBook#0;class#Biblioteca#0" />
+            <element signature="method#manageResponseReturnBook#0;class#Biblioteca#0" />
             <element signature="method#getBooksInList#0;class#Biblioteca#0" />
             <element signature="method#checkOut#0;class#Biblioteca#0" />
             <element signature="method#printBookList#0;class#Biblioteca#0" />
             <element signature="method#returnBook#0;class#Biblioteca#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Book/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="38" column="44" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
+          <folding>
+            <element signature="method#Book#0;class#Book#0" />
+            <element signature="e#935#936#0" expanded="true" />
+            <element signature="e#968#969#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/Book/BookTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#297#298#0" expanded="true" />
+            <element signature="e#351#352#0" expanded="true" />
           </folding>
         </state>
       </provider>
