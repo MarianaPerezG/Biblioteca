@@ -11,7 +11,9 @@ public class Menu {
     public void printMenu(){
         printer.print("Please, choose a valid option:");
         printer.print("(1) Book List");
-        printer.print("(2) Quit");
-        printer.print("(3) Checkout");
+        printer.print("(2) Checkout");
+        printer.print("(3) Return");
+        printer.print("(4) Quit");
+
     }
 }

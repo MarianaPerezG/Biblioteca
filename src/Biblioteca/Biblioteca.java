@@ -49,13 +49,20 @@ public class Biblioteca {
     private void chooseOption(String option){
 
         if(option.equals("1")){
-            printAvailableBookList(this.bookList);
+            printBookList(this.bookList, true);
         }
         else if(option.equals("2")){
-            giveGoodBye();
+
+           String reference =  getItemReference();
+            manageResponseToCheckoutBook(reference);
         }
         else if(option.equals("3")){
-            getOptionToCheckOut();
+
+            String reference =  getItemReference();
+            manageResponseReturnBook(reference);
+        }
+        else if(option.equals("4")){
+            giveGoodBye();
         }
         else{
             printer.print(Messages.INVALID_MENU_MESSAGE);
@@ -63,42 +70,66 @@ public class Biblioteca {
 
     }
 
-    private void getOptionToCheckOut(){
+    private String getItemReference(){
 
         printer.print(Messages.SELECT_MESSAGE);
-        String selected = inputReader.getInput();
-        manageResponse(selected);
+        return inputReader.getInput();
+
     }
 
-    private void manageResponse(String selected){
+    private void manageResponseToCheckoutBook(String selected){
 
-        ArrayList<Book> selectedBooks = getBooksInList(selected);
+        ArrayList<Book> selectedBooks = getBooksInList(selected, true);
 
         if( selectedBooks.size() == 0){
             printer.print(Messages.EMPTY_BOOK_LIST);
-            getOptionToCheckOut();
+            manageResponseToCheckoutBook(getItemReference());
         }
         else if (selectedBooks.size() == 1){
             checkOut(selectedBooks.get(0));
         }
         else{
             printer.print(Messages.SELECT_OPTION);
-            printAvailableBookList(selectedBooks);
-            getOptionToCheckOut();
+            printBookList(selectedBooks, true);
+            manageResponseToCheckoutBook(getItemReference());
 
         }
 
     }
 
-    public ArrayList<Book> getBooksInList(String selected){
+    public void manageResponseReturnBook(String selected){
+
+        ArrayList<Book> selectedBooks = getBooksInList(selected, false);
+
+        if( selectedBooks.size() == 0){
+            printer.print(Messages.EMPTY_BOOK_LIST);
+            manageResponseReturnBook(getItemReference());
+        }
+        else if (selectedBooks.size() == 1){
+            returnBook(selectedBooks.get(0));
+        }
+        else{
+            printer.print(Messages.SELECT_OPTION);
+            printBookList(selectedBooks, false);
+            manageResponseReturnBook(getItemReference());
+
+        }
+
+
+    }
+
+    public ArrayList<Book> getBooksInList(String selected, Boolean available ){
 
         ArrayList<Book> booksFound = new ArrayList<Book>();
 
         for (Book book:bookList){
 
-            if (book.getName().toLowerCase().contains(selected.toLowerCase()) || book.getAuthor().toLowerCase().contains(selected.toLowerCase())){
-                booksFound.add(book);
+            if(book.isAvailable() == available){
+                if (book.getName().toLowerCase().contains(selected.toLowerCase()) || book.getAuthor().toLowerCase().contains(selected.toLowerCase())){
+                    booksFound.add(book);
+                }
             }
+
         }
 
         return booksFound;
@@ -108,7 +139,9 @@ public class Biblioteca {
 
         if(book.isAvailable()){
             book.markTaken();
+            printer.print(Messages.CHECKOUT_INFO + " " + book.getInfo());
             printer.print(Messages.CHECKOUT_SUCCESSFUL);
+
             return true;
 
         }else{
@@ -118,14 +151,14 @@ public class Biblioteca {
 
     }
 
-    public int printAvailableBookList(ArrayList books){
+    public int printBookList(ArrayList books, Boolean available){
 
         int availableBooks = 0;
 
         for (int i=0; i<books.size(); i++){
 
             Book book = (Book) books.get(i);
-            if(book.isAvailable()){
+            if(book.isAvailable() == available){
                 availableBooks++;
                printer.print(book.getName() + ' ' + book.getAuthor() + ' ' + book.getYearPublished());
             }
@@ -133,6 +166,22 @@ public class Biblioteca {
         }
 
         return availableBooks;
+    }
+
+
+    public boolean returnBook(Book book){
+
+        if(!book.isAvailable()){
+            book.markAvailable();
+            printer.print(Messages.RETURN_INFO + " " + book.getInfo());
+            printer.print(Messages.RETURN_SUCCESSFUL);
+            return true;
+
+        }else{
+            printer.print(Messages.RETURN_UNSUCCESSFUL);
+            return false;
+        }
+
     }
 
 }

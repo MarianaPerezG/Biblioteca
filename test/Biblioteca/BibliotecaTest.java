@@ -29,18 +29,28 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void testThatGetBooksInListFindsABook(){
+    public void testThatGetBooksInListFindsABookThatAvailable(){
 
         ArrayList<Book> correctArray = new ArrayList<Book>();
         correctArray.add(book);
 
-        assertEquals(biblioteca.getBooksInList("Te"), correctArray);
+        assertEquals(biblioteca.getBooksInList("Te", true), correctArray);
     }
 
     @Test
-    public void testThatGetBooksListReturnsEmptyArrayListIfNotMatchFound(){
+    public void testThatGetBooksListReturnsEmptyArrayListIfNotMatchFoundAvailable(){
         ArrayList<Book> correctArray = new ArrayList<Book>();
-        assertEquals(biblioteca.getBooksInList("Random String"), correctArray);
+        assertEquals(biblioteca.getBooksInList("Random String", true), correctArray);
+    }
+
+    @Test
+    public void testThatGetBooksInListFindsABookThatNotAvailable(){
+
+        ArrayList<Book> correctArray = new ArrayList<Book>();
+        book.markTaken();
+        correctArray.add(book);
+
+        assertEquals(biblioteca.getBooksInList("Te", false), correctArray);
     }
 
     @Test
@@ -63,7 +73,7 @@ public class BibliotecaTest {
         bookArray.add(book);
         bookArray.add(new Book("Test2", "Mariana Perez", 1989));
 
-        assertEquals(biblioteca.printAvailableBookList(bookArray), 1);
+        assertEquals(biblioteca.printBookList(bookArray, true), 1);
     }
 
 }

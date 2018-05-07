@@ -35,6 +35,10 @@ public class Book {
         return author;
     }
 
+    public String getInfo(){
+        return String.format("%s by %sliving", this.getName(), this.getAuthor());
+    }
+
     public int getYearPublished(){
         return yearPublished;
     }
@@ -45,6 +49,10 @@ public class Book {
 
     public void markTaken(){
         available = false;
+    }
+
+    public void markAvailable(){
+        available = true;
     }
 
 }
