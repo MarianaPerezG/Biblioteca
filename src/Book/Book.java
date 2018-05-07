@@ -44,7 +44,6 @@ public class Book {
     }
 
     public void markTaken(){
-
         available = false;
     }
 

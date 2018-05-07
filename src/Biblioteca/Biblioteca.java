@@ -49,7 +49,7 @@ public class Biblioteca {
     private void chooseOption(String option){
 
         if(option.equals("1")){
-            printBookList(this.bookList);
+            printAvailableBookList(this.bookList);
         }
         else if(option.equals("2")){
             giveGoodBye();
@@ -83,7 +83,7 @@ public class Biblioteca {
         }
         else{
             printer.print(Messages.SELECT_OPTION);
-            printBookList(selectedBooks);
+            printAvailableBookList(selectedBooks);
             getOptionToCheckOut();
 
         }
@@ -104,22 +104,35 @@ public class Biblioteca {
         return booksFound;
     }
 
-    public void checkOut(Book book){
+    public boolean checkOut(Book book){
 
-        book.markTaken();
+        if(book.isAvailable()){
+            book.markTaken();
+            printer.print(Messages.CHECKOUT_SUCCESSFUL);
+            return true;
+
+        }else{
+            printer.print(Messages.CHECKOUT_UNSUCCESSFUL);
+            return false;
+        }
 
     }
 
-    private void printBookList(ArrayList books){
+    public int printAvailableBookList(ArrayList books){
+
+        int availableBooks = 0;
 
         for (int i=0; i<books.size(); i++){
 
             Book book = (Book) books.get(i);
             if(book.isAvailable()){
-                System.out.println(book.getName() + ' ' + book.getAuthor() + ' ' + book.getYearPublished());
+                availableBooks++;
+               printer.print(book.getName() + ' ' + book.getAuthor() + ' ' + book.getYearPublished());
             }
 
         }
+
+        return availableBooks;
     }
 
 }
