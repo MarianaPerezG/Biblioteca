@@ -14,6 +14,5 @@ public class Menu {
         printer.print("(2) Checkout");
         printer.print("(3) Return");
         printer.print("(4) Quit");
-
     }
 }
