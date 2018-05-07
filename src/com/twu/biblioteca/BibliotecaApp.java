@@ -1,5 +1,9 @@
 package com.twu.biblioteca;
 
+import Helpers.InputReader;
+import Helpers.Printer;
+import Helpers.Menu;
+
 import Biblioteca.Biblioteca;
 import Book.Book;
 
@@ -9,7 +13,9 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
 
-        biblioteca = new Biblioteca("The Bangalore Public Library");
+        Printer printer = new Printer();
+
+        biblioteca = new Biblioteca("The Bangalore Public Library", new InputReader(printer), printer, new Menu());
         addBooks(biblioteca);
         biblioteca.giveWelcome();
         biblioteca.init();

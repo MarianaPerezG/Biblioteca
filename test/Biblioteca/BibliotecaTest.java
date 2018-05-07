@@ -1,6 +1,10 @@
 package Biblioteca;
 
 import Book.Book;
+import Helpers.InputReader;
+import Helpers.Messages;
+import Helpers.Printer;
+import Helpers.Menu;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -13,20 +17,9 @@ public class BibliotecaTest {
 
     @Before
     public void setUp() {
-       biblioteca = new Biblioteca("Test");
+       biblioteca = new Biblioteca("Test", new InputReader(), new Printer(), new Menu());
        book = new Book("Test", "Test Author", 2018);
        biblioteca.bookList.add(book);
     }
-
-//    @Test
-//    public void checkIfCheckoutABookCorrectlyReturnsTrue(){
-//
-//        assertEquals(biblioteca.checkOut(book), true);
-//    }
-
-//    @Test
-//    public void checkIfBookInList(){
-//        assertEquals(biblioteca.checkIfExist("Test"), true);
-//    }
 
 }

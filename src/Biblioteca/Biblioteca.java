@@ -1,71 +1,47 @@
 package Biblioteca;
 
+import Helpers.InputReader;
+import Helpers.Messages;
+import Helpers.Printer;
+import Helpers.Menu;
+import Book.Book;
+
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
-import Book.Book;
 
 public class Biblioteca {
 
     private String name;
-    private static final String WELCOME_MESSAGE = "Welcome to";
-    private static final String GOODBYE_MESSAGE = "Thank you for using Biblioteca. See you soon.";
-    private static final String INVALID_OPTION_MESSAGE = "The option you have chosen is not a valid one, please try again";
-    private static final String INVALID_MENU_MESSAGE = "The option you have chosen is not in the menu, please try again";
-    private static final String SELECT_MESSSAGE = "Select the book you want to checkout";
-
+    private Printer printer;
+    private Menu menu;
+    private InputReader inputReader;
     public ArrayList<Book> bookList;
 
-    public Biblioteca(String name){
+    public Biblioteca(String name, InputReader inputReader, Printer printer, Menu menu){
         this.name = name;
         this.bookList = new ArrayList<Book>();
-
+        this.printer = printer;
+        this.inputReader = inputReader;
+        this.menu = menu;
     }
 
     public void giveWelcome(){
-        System.out.println(WELCOME_MESSAGE + " " + name);
+        printer.print(Messages.WELCOME_MESSAGE + " " + name);
     }
 
     private void giveGoodBye(){
-
-        System.out.println(GOODBYE_MESSAGE );
+        printer.print(Messages.GOODBYE_MESSAGE );
         System.exit(0);
-
     }
 
     public void init(){
-        printMenu();
-        manageInput();
-    }
-
-    private void printMenu(){
-
-        System.out.println("Please, choose a valid option:");
-        System.out.println("(1) Book List");
-        System.out.println("(2) Quit");
-        System.out.println("(3) Checkout");
-
-    }
-
-    private void manageInput(){
 
         while(true){
-            String input = getInput();
+            menu.printMenu();
+            String input = inputReader.getInput();
             chooseOption(input);
-        }
-
-    }
-
-    private String getInput(){
-
-        Scanner scanner = new Scanner(System.in);
-
-        try {
-            return scanner.nextLine();
-        } catch (InputMismatchException ex) {
-            System.out.println(INVALID_OPTION_MESSAGE);
-            return getInput();
         }
 
     }
@@ -74,7 +50,6 @@ public class Biblioteca {
 
         if(option.equals("1")){
             printBookList(this.bookList);
-            printMenu();
         }
         else if(option.equals("2")){
             giveGoodBye();
@@ -83,28 +58,35 @@ public class Biblioteca {
             getOptionToCheckOut();
         }
         else{
-            System.out.println(INVALID_MENU_MESSAGE);
+            printer.print(Messages.INVALID_MENU_MESSAGE);
         }
 
-    }
-
-    private void printBookList(ArrayList books){
-
-        for (int i=0; i<books.size(); i++){
-
-            Book book = (Book) books.get(i);
-            if(book.isAvailable()){
-                System.out.println(book.getName() + ' ' + book.getAuthor() + ' ' + book.getYearPublished());
-            }
-
-        }
     }
 
     private void getOptionToCheckOut(){
 
-        System.out.println(SELECT_MESSSAGE);
-        String selected = getInput();
-        checkOptionValidity(selected);
+        printer.print(Messages.SELECT_MESSAGE);
+        String selected = inputReader.getInput();
+        manageResponse(selected);
+    }
+
+    private void manageResponse(String selected){
+
+        ArrayList<Book> selectedBooks = getBooksInList(selected);
+
+        if( selectedBooks.size() == 0){
+            printer.print(Messages.EMPTY_BOOK_LIST);
+            getOptionToCheckOut();
+        }
+        else if (selectedBooks.size() == 1){
+            checkOut(selectedBooks.get(0));
+        }
+        else{
+            printer.print(Messages.SELECT_OPTION);
+            printBookList(selectedBooks);
+            getOptionToCheckOut();
+
+        }
 
     }
 
@@ -122,39 +104,22 @@ public class Biblioteca {
         return booksFound;
     }
 
-    private void checkOptionValidity(String selected){
-
-        ArrayList<Book> selectedBooks = getBooksInList(selected);
-
-        if (selectedBooks.size() > 0){
-
-            if(selectedBooks.size() == 1){
-
-                checkOut(selectedBooks.get(0));
-
-            }else{
-                System.out.println("Please select between the options available:");
-                printBookList(selectedBooks);
-                getOptionToCheckOut();
-
-            }
-
-
-        }else{
-
-            System.out.println("There is no book with that description. Try again");
-            getOptionToCheckOut();
-
-        }
-
-
-    }
-
     public void checkOut(Book book){
 
         book.markTaken();
-        printMenu();
 
+    }
+
+    private void printBookList(ArrayList books){
+
+        for (int i=0; i<books.size(); i++){
+
+            Book book = (Book) books.get(i);
+            if(book.isAvailable()){
+                System.out.println(book.getName() + ' ' + book.getAuthor() + ' ' + book.getYearPublished());
+            }
+
+        }
     }
 
 }
