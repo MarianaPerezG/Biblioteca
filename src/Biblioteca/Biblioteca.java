@@ -16,6 +16,7 @@ public class Biblioteca {
     private Menu menu;
     private InputReader inputReader;
     public ArrayList<Book> bookList;
+    private Object x;
 
     public Biblioteca(String name, InputReader inputReader, Printer printer, Menu menu){
         this.name = name;
@@ -137,13 +138,12 @@ public class Biblioteca {
 
         if(book.isAvailable()){
             book.markTaken();
-            printer.print(Messages.CHECKOUT_INFO + " " + book.getInfo());
-            printer.print(Messages.CHECKOUT_SUCCESSFUL);
-
+            printer.printWithColor(Messages.CHECKOUT_INFO + " " + book.getInfo(), "GREEN");
+            printer.printWithColor(Messages.CHECKOUT_SUCCESSFUL, "GREEN");
             return true;
 
         }else{
-            printer.print(Messages.CHECKOUT_UNSUCCESSFUL);
+            printer.printWithColor(Messages.CHECKOUT_UNSUCCESSFUL, "RED");
             return false;
         }
 
