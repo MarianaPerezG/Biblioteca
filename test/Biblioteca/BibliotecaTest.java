@@ -1,8 +1,7 @@
 package Biblioteca;
 
-import Book.Book;
+import Item.Book;
 import Helpers.InputReader;
-import Helpers.Messages;
 import Helpers.Printer;
 import Helpers.Menu;
 

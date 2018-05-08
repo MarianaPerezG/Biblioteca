@@ -1,26 +1,26 @@
-package Book;
+package Item;
 
-public class Book {
+public class Movie implements checkableObject{
 
     private String name;
-    private String author;
+    private String director;
     private int yearPublished;
+    private float rate;
     public boolean available = true;
 
-    public Book(String name, String author, int yearPublished){
-
-        setName(name);
-        setAuthor(author);
-        setYearPublished(yearPublished);
-
+    public Movie(String name, String director, int yearPublished, float rate){
+        this.name = name;
+        this.director =  director;
+        this.yearPublished = yearPublished;
+        this.rate = rate;
     }
 
     private void setName(String name){
         this.name = name;
     }
 
-    private void setAuthor (String author){
-        this.author = author;
+    private void setDirector (String director){
+        this.director = director;
     }
 
     private void setYearPublished(int yearPublished){
@@ -31,12 +31,12 @@ public class Book {
         return name;
     }
 
-    public String getAuthor(){
-        return author;
+    public String getDirector(){
+        return director;
     }
 
     public String getInfo(){
-        return String.format("%s by %sliving", this.getName(), this.getAuthor());
+        return String.format("%s by %s. Year of Publish: %03d", this.getName(), this.getDirector(), this.getYearPublished());
     }
 
     public int getYearPublished(){
@@ -54,5 +54,4 @@ public class Book {
     public void markAvailable(){
         available = true;
     }
-
 }

@@ -4,7 +4,7 @@ import Helpers.InputReader;
 import Helpers.Messages;
 import Helpers.Printer;
 import Helpers.Menu;
-import Book.Book;
+import Item.Book;
 
 
 import java.util.ArrayList;
@@ -158,7 +158,7 @@ public class Biblioteca {
             Book book = (Book) books.get(i);
             if(book.isAvailable() == available){
                 availableBooks++;
-               printer.print(book.getName() + ' ' + book.getAuthor() + ' ' + book.getYearPublished());
+               printer.print(book.getInfo());
             }
 
         }

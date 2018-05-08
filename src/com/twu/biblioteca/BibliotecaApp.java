@@ -5,7 +5,7 @@ import Helpers.Printer;
 import Helpers.Menu;
 
 import Biblioteca.Biblioteca;
-import Book.Book;
+import Item.Book;
 
 public class BibliotecaApp {
 
