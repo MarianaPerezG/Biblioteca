@@ -21,11 +21,10 @@ public class BookTest {
     @Test
     public void testMarkingTakenABook(){
         assertEquals(book.isAvailable(), true);
-        book.markTaken();
+        book.checkOut();
         assertEquals(book.isAvailable(), false);
 
     }
-
 
 
 }

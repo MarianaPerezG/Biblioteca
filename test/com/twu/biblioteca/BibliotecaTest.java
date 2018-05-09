@@ -1,4 +1,4 @@
-package Biblioteca;
+package com.twu.biblioteca;
 
 import Item.Book;
 import Helpers.InputReader;
@@ -6,6 +6,8 @@ import Helpers.Printer;
 import Helpers.Menu;
 
 import static org.junit.Assert.*;
+
+import com.twu.biblioteca.Biblioteca;
 import org.junit.Test;
 import org.junit.Before;
 
@@ -46,7 +48,7 @@ public class BibliotecaTest {
     public void testThatGetBooksInListFindsABookThatNotAvailable(){
 
         ArrayList<Book> correctArray = new ArrayList<Book>();
-        book.markTaken();
+        book.checkOut();
         correctArray.add(book);
 
         assertEquals(biblioteca.getBooksInList("Te", false), correctArray);
@@ -59,7 +61,7 @@ public class BibliotecaTest {
 
     @Test
     public void testIfAnUnavailableCantBeCheckedOut(){
-        book.markTaken();
+        book.checkOut();
         assertEquals(biblioteca.checkOut(book), false);
 
     }
@@ -68,7 +70,7 @@ public class BibliotecaTest {
     public void testIfPrintBooksListPrintsOnlyTheAvailable(){
 
         ArrayList<Book> bookArray = new ArrayList<Book>();
-        book.markTaken();
+        book.checkOut();
         bookArray.add(book);
         bookArray.add(new Book("Test2", "Mariana Perez", 1989));
 

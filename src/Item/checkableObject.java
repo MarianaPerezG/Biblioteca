@@ -2,8 +2,8 @@ package Item;
 
 public interface checkableObject {
 
-    public void markTaken();
+    public void checkOut();
 
-    public void markAvailable();
+    public void checkIn();
 
 }

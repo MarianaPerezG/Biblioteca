@@ -1,10 +1,11 @@
-package Biblioteca;
+package com.twu.biblioteca;
 
 import Helpers.InputReader;
 import Helpers.Messages;
 import Helpers.Printer;
 import Helpers.Menu;
 import Item.Book;
+import Item.Movie;
 
 
 import java.util.ArrayList;
@@ -16,11 +17,14 @@ public class Biblioteca {
     private Menu menu;
     private InputReader inputReader;
     public ArrayList<Book> bookList;
+    public ArrayList<Movie> movieList;
+
     private Object x;
 
     public Biblioteca(String name, InputReader inputReader, Printer printer, Menu menu){
         this.name = name;
         this.bookList = new ArrayList<Book>();
+        this.movieList = new ArrayList<Movie>();
         this.printer = printer;
         this.inputReader = inputReader;
         this.menu = menu;
@@ -137,7 +141,7 @@ public class Biblioteca {
     public boolean checkOut(Book book){
 
         if(book.isAvailable()){
-            book.markTaken();
+            book.checkOut();
             printer.printWithColor(Messages.CHECKOUT_INFO + " " + book.getInfo(), "GREEN");
             printer.printWithColor(Messages.CHECKOUT_SUCCESSFUL, "GREEN");
             return true;
@@ -169,13 +173,13 @@ public class Biblioteca {
     public boolean returnBook(Book book){
 
         if(!book.isAvailable()){
-            book.markAvailable();
-            printer.print(Messages.RETURN_INFO + " " + book.getInfo());
-            printer.print(Messages.RETURN_SUCCESSFUL);
+            book.checkIn();
+            printer.printWithColor(Messages.RETURN_INFO + " " + book.getInfo(), "GREEN");
+            printer.printWithColor(Messages.RETURN_SUCCESSFUL, "GREEN");
             return true;
 
         }else{
-            printer.print(Messages.RETURN_UNSUCCESSFUL);
+            printer.printWithColor(Messages.RETURN_UNSUCCESSFUL, "RED");
             return false;
         }
 

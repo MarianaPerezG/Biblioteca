@@ -47,11 +47,11 @@ public class Book implements checkableObject {
         return available;
     }
 
-    public void markTaken(){
+    public void checkOut(){
         available = false;
     }
 
-    public void markAvailable(){
+    public void checkIn(){
         available = true;
     }
 
