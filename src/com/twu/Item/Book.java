@@ -1,6 +1,6 @@
-package Item;
+package com.twu.Item;
 
-public class Book implements checkableObject {
+public class Book implements checkableItem {
 
     private String name;
     private String author;

@@ -1,13 +1,12 @@
 package com.twu.biblioteca;
 
-import Item.Book;
-import Helpers.InputReader;
-import Helpers.Printer;
-import Helpers.Menu;
+import com.twu.Item.Book;
+import com.twu.Helpers.InputReader;
+import com.twu.Helpers.Printer;
+import com.twu.Helpers.Menu;
 
 import static org.junit.Assert.*;
 
-import com.twu.biblioteca.Biblioteca;
 import org.junit.Test;
 import org.junit.Before;
 
@@ -21,12 +20,15 @@ public class BibliotecaTest {
     @Before
     public void setUp() {
 
-        Printer printer;
-        printer = new Printer();
-
-        biblioteca = new Biblioteca("Test", new InputReader(printer), printer , new Menu());
+        biblioteca = new Biblioteca("Test");
         book = new Book("Test", "Test Author", 2018);
-        biblioteca.bookList.add(book);
+        biblioteca.getBookList().add(book);
+    }
+
+    @Test
+    public void shouldReturnWelcomeMessageWithName(){
+
+        assertEquals(biblioteca.welcomeMessage(), "Test");
     }
 
     @Test
@@ -35,13 +37,13 @@ public class BibliotecaTest {
         ArrayList<Book> correctArray = new ArrayList<Book>();
         correctArray.add(book);
 
-        assertEquals(biblioteca.getBooksInList("Te", true), correctArray);
+        assertEquals(biblioteca.getBooksMatchingInList("Te", true), correctArray);
     }
 
     @Test
     public void testThatGetBooksListReturnsEmptyArrayListIfNotMatchFoundAvailable(){
         ArrayList<Book> correctArray = new ArrayList<Book>();
-        assertEquals(biblioteca.getBooksInList("Random String", true), correctArray);
+        assertEquals(biblioteca.getBooksMatchingInList("Random String", true), correctArray);
     }
 
     @Test
@@ -51,30 +53,9 @@ public class BibliotecaTest {
         book.checkOut();
         correctArray.add(book);
 
-        assertEquals(biblioteca.getBooksInList("Te", false), correctArray);
+        assertEquals(biblioteca.getBooksMatchingInList("Te", false), correctArray);
     }
 
-    @Test
-    public void testIfAnAvailableBookCanBeCheckedOut(){
-        assertEquals(biblioteca.checkOut(book), true);
-    }
 
-    @Test
-    public void testIfAnUnavailableCantBeCheckedOut(){
-        book.checkOut();
-        assertEquals(biblioteca.checkOut(book), false);
-
-    }
-
-    @Test
-    public void testIfPrintBooksListPrintsOnlyTheAvailable(){
-
-        ArrayList<Book> bookArray = new ArrayList<Book>();
-        book.checkOut();
-        bookArray.add(book);
-        bookArray.add(new Book("Test2", "Mariana Perez", 1989));
-
-        assertEquals(biblioteca.printBookList(bookArray, true), 1);
-    }
 
 }

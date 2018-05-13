@@ -1,4 +1,4 @@
-package Helpers;
+package com.twu.Helpers;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

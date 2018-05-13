@@ -1,6 +1,6 @@
-package Item;
+package com.twu.Item;
 
-public class Movie implements checkableObject{
+public class Movie implements checkableItem {
 
     private String name;
     private String director;

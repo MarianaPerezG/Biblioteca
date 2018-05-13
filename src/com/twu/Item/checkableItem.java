@@ -1,11 +1,11 @@
 package com.twu.Item;
 
-public interface checkableObject extends printableObject{
+public interface checkableItem extends printableObject{
 
-    public void checkOut();
+    void checkOut();
 
-    public void checkIn();
+    void checkIn();
 
-    public boolean isAvailable();
+    boolean isAvailable();
 
 }

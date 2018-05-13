@@ -1,134 +1,40 @@
 package com.twu.biblioteca;
 
-import Helpers.InputReader;
-import Helpers.Messages;
-import Helpers.Printer;
-import Helpers.Menu;
-import Item.Book;
-import Item.Movie;
-
-
+import com.twu.Helpers.*;
+import com.twu.Item.*;
 import java.util.ArrayList;
 
 public class Biblioteca {
 
     private String name;
-    private Printer printer;
-    private Menu menu;
-    private InputReader inputReader;
-    public ArrayList<Book> bookList;
+    private ArrayList<Book> bookList;
     public ArrayList<Movie> movieList;
 
-    private Object x;
-
-    public Biblioteca(String name, InputReader inputReader, Printer printer, Menu menu){
+    public Biblioteca(String name) {
         this.name = name;
         this.bookList = new ArrayList<Book>();
         this.movieList = new ArrayList<Movie>();
-        this.printer = printer;
-        this.inputReader = inputReader;
-        this.menu = menu;
     }
 
-    public void giveWelcome(){
-        printer.print(Messages.WELCOME_MESSAGE + " " + name);
-    }
+    public String welcomeMessage() {
 
-    private void giveGoodBye(){
-        printer.print(Messages.GOODBYE_MESSAGE );
-        System.exit(0);
-    }
-
-    public void init(){
-
-        while(true){
-            menu.printMenu();
-            String input = inputReader.getInput();
-            chooseOption(input);
-        }
+        return Messages.WELCOME_MESSAGE + " " + name;
 
     }
 
-    private void chooseOption(String option){
+    public String giveGoodBye() {
 
-        if(option.equals("1")){
-            printBookList(this.bookList, true);
-        }
-        else if(option.equals("2")){
-
-           String reference =  getItemReference();
-            manageResponseToCheckoutBook(reference);
-        }
-        else if(option.equals("3")){
-
-            String reference =  getItemReference();
-            manageResponseReturnBook(reference);
-        }
-        else if(option.equals("4")){
-            giveGoodBye();
-        }
-        else{
-            printer.print(Messages.INVALID_MENU_MESSAGE);
-        }
-
+        return Messages.GOODBYE_MESSAGE;
     }
 
-    private String getItemReference(){
-
-        printer.print(Messages.SELECT_MESSAGE);
-        return inputReader.getInput();
-
-    }
-
-    private void manageResponseToCheckoutBook(String selected){
-
-        ArrayList<Book> selectedBooks = getBooksInList(selected, true);
-
-        if( selectedBooks.size() == 0){
-            printer.print(Messages.EMPTY_BOOK_LIST);
-            manageResponseToCheckoutBook(getItemReference());
-        }
-        else if (selectedBooks.size() == 1){
-            checkOut(selectedBooks.get(0));
-        }
-        else{
-            printer.print(Messages.SELECT_OPTION);
-            printBookList(selectedBooks, true);
-            manageResponseToCheckoutBook(getItemReference());
-
-        }
-
-    }
-
-    public void manageResponseReturnBook(String selected){
-
-        ArrayList<Book> selectedBooks = getBooksInList(selected, false);
-
-        if( selectedBooks.size() == 0){
-            printer.print(Messages.EMPTY_BOOK_LIST);
-            manageResponseReturnBook(getItemReference());
-        }
-        else if (selectedBooks.size() == 1){
-            returnBook(selectedBooks.get(0));
-        }
-        else{
-            printer.print(Messages.SELECT_OPTION);
-            printBookList(selectedBooks, false);
-            manageResponseReturnBook(getItemReference());
-
-        }
-
-
-    }
-
-    public ArrayList<Book> getBooksInList(String selected, Boolean available ){
+    public ArrayList<Book> getBooksMatchingInList(String selected, Boolean available) {
 
         ArrayList<Book> booksFound = new ArrayList<Book>();
 
-        for (Book book:bookList){
+        for (Book book:bookList) {
 
-            if(book.isAvailable() == available){
-                if (book.getName().toLowerCase().contains(selected.toLowerCase()) || book.getAuthor().toLowerCase().contains(selected.toLowerCase())){
+            if (book.isAvailable() == available) {
+                if (book.getName().toLowerCase().contains(selected.toLowerCase()) || book.getAuthor().toLowerCase().contains(selected.toLowerCase())) {
                     booksFound.add(book);
                 }
             }
@@ -138,51 +44,29 @@ public class Biblioteca {
         return booksFound;
     }
 
-    public boolean checkOut(Book book){
+    public ArrayList<Movie> getMoviesMatchingInList(String selected, Boolean available) {
 
-        if(book.isAvailable()){
-            book.checkOut();
-            printer.printWithColor(Messages.CHECKOUT_INFO + " " + book.getInfo(), "GREEN");
-            printer.printWithColor(Messages.CHECKOUT_SUCCESSFUL, "GREEN");
-            return true;
+        ArrayList<Movie> moviesFound = new ArrayList<Movie>();
 
-        }else{
-            printer.printWithColor(Messages.CHECKOUT_UNSUCCESSFUL, "RED");
-            return false;
-        }
+        for (Movie movie:movieList) {
 
-    }
-
-    public int printBookList(ArrayList books, Boolean available){
-
-        int availableBooks = 0;
-
-        for (int i=0; i<books.size(); i++){
-
-            Book book = (Book) books.get(i);
-            if(book.isAvailable() == available){
-                availableBooks++;
-               printer.print(book.getInfo());
+            if (movie.isAvailable() == available) {
+                if (movie.getName().toLowerCase().contains(selected.toLowerCase())) {
+                    moviesFound.add(movie);
+                }
             }
 
         }
 
-        return availableBooks;
+        return moviesFound;
     }
 
-    public boolean returnBook(Book book){
+    public ArrayList<Book> getBookList() {
+        return bookList;
+    }
 
-        if(!book.isAvailable()){
-            book.checkIn();
-            printer.printWithColor(Messages.RETURN_INFO + " " + book.getInfo(), "GREEN");
-            printer.printWithColor(Messages.RETURN_SUCCESSFUL, "GREEN");
-            return true;
-
-        }else{
-            printer.printWithColor(Messages.RETURN_UNSUCCESSFUL, "RED");
-            return false;
-        }
-
+    public ArrayList<Movie> getMovieList(){
+        return movieList;
     }
 
 }
