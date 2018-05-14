@@ -71,7 +71,7 @@ public class BibliotecaTest {
     public void shouldGetBooksInListThatAreNotAvailable(){
 
         ArrayList<Book> correctArray = new ArrayList<Book>();
-        book.checkOut();
+        book.setCheckedOut();
         correctArray.add(book);
 
         assertEquals(biblioteca.getBooksMatchingInList("Te", false), correctArray);
@@ -81,7 +81,7 @@ public class BibliotecaTest {
     public void shouldGetMoviesInListThatAreNotAvailable(){
 
         ArrayList<Movie> correctArray = new ArrayList<Movie>();
-        movie.checkOut();
+        movie.setCheckedOut();
         correctArray.add(movie);
 
         assertEquals(biblioteca.getMoviesMatchingInList("Te", false), correctArray);

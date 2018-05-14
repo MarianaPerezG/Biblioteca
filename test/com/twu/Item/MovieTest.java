@@ -22,7 +22,7 @@ public class MovieTest {
     @Test
     public void shouldMarkTakenAMovie(){
         assertEquals(movie.isAvailable(), true);
-        movie.checkOut();
+        movie.setCheckedOut();
         assertEquals(movie.isAvailable(), false);
 
     }

@@ -15,12 +15,12 @@ public class BibliotecaSystemTest {
     public Movie movie;
     public Printer printer;
     public InputReader inputreader;
+    public String input;
 
     @Before
     public void setUp() {
 
         printer = new Printer();
-
         biblioteca = new Biblioteca("Test");
         book = new Book("Test", "Test Author", 2018);
         movie = new Movie("Test Movie", "Test director", 2018, 5.0f);
@@ -32,38 +32,43 @@ public class BibliotecaSystemTest {
 
     @Test
     public void shouldCheckOutAnAvailableBook(){
-        assertEquals(bibliotecaSys.checkOut(book), true);
+        assertEquals(bibliotecaSys.manageBookCheckOut(book.getName()), true);
     }
 
     @Test
     public void shouldNotCheckOutIfAnUnavailableBook(){
-        book.checkOut();
-        assertEquals(bibliotecaSys.checkOut(book), false);
+        book.setCheckedOut();
+        assertEquals(bibliotecaSys.manageBookCheckOut(book.getName()), false);
 
     }
 
-    @Test
-    public void shouldCheckOutIfAnAvailableMovie(){
-        assertEquals(bibliotecaSys.checkOut(movie), true);
-    }
+//    @Test
+//    public void shouldCheckOutIfAnAvailableMovie(){
+//        assertEquals(bibliotecaSys.manageMovieCheckOut(movie.getName()), true);
+//    }
 
     @Test
     public void shouldNotCheckOutIfAnUnavailableMovie(){
-        movie.checkOut();
-        assertEquals(bibliotecaSys.checkOut(movie), false);
+        //given
+
+        //when
+        movie.setCheckedOut();
+
+        //then
+        assertEquals(bibliotecaSys.manageMovieCheckOut(movie.getName()), false);
     }
 
-    @Test
+        @Test
     public void shouldNotAllowCheckOutIfNotMatchingBook(){
 
-        assertEquals(bibliotecaSys.manageResponseToCheckoutBook("Random"), false);
+        assertEquals(bibliotecaSys.manageBookCheckOut("Random"), false);
 
     }
 
     @Test
     public void shouldAllowCheckOutIfNotMatchingBook(){
 
-        assertEquals(bibliotecaSys.manageResponseToCheckoutBook("Test"), true);
+        assertEquals(bibliotecaSys.manageBookCheckOut("Test"), true);
         assertEquals(book.isAvailable(), false);
 
     }
@@ -71,14 +76,15 @@ public class BibliotecaSystemTest {
     @Test
     public void shouldNotAllowCheckOutIfNotMatchingMovie(){
 
-        assertEquals(bibliotecaSys.manageResponseToCheckoutMovie("Random"), false);
+        assertEquals(bibliotecaSys.manageMovieCheckOut("Random"), false);
 
     }
 
     @Test
-    public void shouldAllowCheckOutIfNotMatchingMovie(){
+    public void shouldAllowCheckOutIfMatchingMovie(){
 
-        assertEquals(bibliotecaSys.manageResponseToCheckoutMovie("Test"), true);
+        assertEquals(movie.isAvailable(), true);
+        assertEquals(bibliotecaSys.manageMovieCheckOut("Test"), true);
         assertEquals(movie.isAvailable(), false);
 
     }

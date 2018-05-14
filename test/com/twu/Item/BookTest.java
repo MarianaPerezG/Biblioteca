@@ -21,7 +21,7 @@ public class BookTest {
     @Test
     public void shouldMarkTakenABook(){
         assertEquals(book.isAvailable(), true);
-        book.checkOut();
+        book.setCheckedOut();
         assertEquals(book.isAvailable(), false);
 
     }

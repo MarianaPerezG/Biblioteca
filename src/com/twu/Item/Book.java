@@ -1,6 +1,6 @@
 package com.twu.Item;
 
-public class Book implements checkableItem {
+public class Book implements CheckableItem {
 
     private String name;
     private String author;
@@ -47,11 +47,11 @@ public class Book implements checkableItem {
         return available;
     }
 
-    public void checkOut(){
+    public void setCheckedOut(){
         available = false;
     }
 
-    public void checkIn(){
+    public void setCheckedIn(){
         available = true;
     }
 

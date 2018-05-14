@@ -14,95 +14,79 @@ public class BibliotecaSystem {
         this.printer = printer;
     }
 
-    public boolean manageResponseToCheckoutBook(String selected) {
+    private boolean isReadyToCheck(ArrayList<? extends CheckableItem> items){
 
-        ArrayList<Book> selectedBooks = biblioteca.getBooksMatchingInList(selected, true);
+        if(items.size() == 1){
+            return true;
+        }else if(items.size() == 0){
+            printer.printWithColor(Messages.EMPTY_BOOK_LIST, "RED");
 
-        if (selectedBooks.size() == 0) {
-            printer.print(Messages.EMPTY_BOOK_LIST);
-            return false;
-        } else if (selectedBooks.size() == 1) {
-            return checkOut(selectedBooks.get(0));
-        } else {
-            printer.print(Messages.SELECT_OPTION);
-            printList(selectedBooks, true);
-            return false;
+        }else{
+            printer.printWithColor(Messages.SELECT_OPTION, "BLUE");
+            printList(items, true);
         }
+
+        return false;
 
     }
 
-    public boolean manageResponseToCheckInBook(String selected) {
+    public boolean manageBookCheckOut(String option){
 
-        ArrayList<Book> selectedBooks = biblioteca.getBooksMatchingInList(selected, false);
-
-        if (selectedBooks.size() == 0) {
-            printer.print(Messages.EMPTY_BOOK_LIST);
-            return false;
-        } else if (selectedBooks.size() == 1) {
-            return checkIn(selectedBooks.get(0));
-        } else {
-            printer.print(Messages.SELECT_OPTION);
-            printList(selectedBooks, false);
-            return false;
+        ArrayList<Book> selectedBooks = biblioteca.getBooksMatchingInList(option , true);
+        if (isReadyToCheck(selectedBooks) && selectedBooks.get(0).isAvailable()){
+            checkOut(selectedBooks.get(0));
+            return true;
         }
+
+        return false;
 
     }
 
-    public boolean manageResponseToCheckoutMovie(String selected) {
-
-        ArrayList<Movie> selectedMovies = biblioteca.getMoviesMatchingInList(selected, true);
-
-        if (selectedMovies.size() == 0) {
-            printer.print(Messages.EMPTY_BOOK_LIST);
-            return false;
-        } else if (selectedMovies.size() == 1) {
-            return checkOut(selectedMovies.get(0));
-        } else {
-            printer.print(Messages.SELECT_OPTION);
-            printList(selectedMovies, true);
-            return false;
-
+    public boolean manageBookCheckIn(String option){
+        ArrayList<Book> selectedBooks = biblioteca.getBooksMatchingInList(option , false);
+        if (isReadyToCheck(selectedBooks) && !selectedBooks.get(0).isAvailable()){
+            checkIn(selectedBooks.get(0));
+            return true;
         }
-
+        return false;
     }
 
-    public boolean manageResponseToCheckInMovie(String selected) {
-
-        ArrayList<Movie> selectedMovies = biblioteca.getMoviesMatchingInList(selected, false);
-
-        if (selectedMovies.size() == 0) {
-            printer.print(Messages.EMPTY_BOOK_LIST);
-            return false;
-        } else if (selectedMovies.size() == 1) {
-            return checkIn(selectedMovies.get(0));
-        } else {
-            printer.print(Messages.SELECT_OPTION);
-            printList(selectedMovies, false);
-            return false;
-
+    public boolean manageMovieCheckOut(String option){
+        ArrayList<Movie> selectedMovies = biblioteca.getMoviesMatchingInList(option , true);
+        if (isReadyToCheck(selectedMovies) && selectedMovies.get(0).isAvailable()){
+            checkOut(selectedMovies.get(0));
+            return true;
         }
 
+        return false;
     }
 
-    public boolean checkOut(checkableItem item) {
+    public boolean manageMovieCheckIn(String option){
+        ArrayList<Movie> selectedMovies = biblioteca.getMoviesMatchingInList(option , false);
+        if (isReadyToCheck(selectedMovies)){
+            checkIn(selectedMovies.get(0));
+        }
+        return false;
+    }
+
+    private boolean checkOut(CheckableItem item) {
 
         if (item.isAvailable()) {
-            item.checkOut();
+            item.setCheckedOut();
             printer.printWithColor(Messages.CHECKOUT_INFO + " " + item.getInfo(), "GREEN");
             printer.printWithColor(Messages.CHECKOUT_SUCCESSFUL, "GREEN");
-            return true;
+            return true ;
 
         } else {
             printer.printWithColor(Messages.CHECKOUT_UNSUCCESSFUL, "RED");
             return false;
         }
-
     }
 
-    public boolean checkIn(checkableItem item) {
+    private boolean checkIn(CheckableItem item) {
 
         if (!item.isAvailable()) {
-            item.checkIn();
+            item.setCheckedIn();
             printer.printWithColor(Messages.RETURN_INFO + " " + item.getInfo(), "GREEN");
             printer.printWithColor(Messages.RETURN_SUCCESSFUL, "GREEN");
             return true ;
@@ -114,9 +98,9 @@ public class BibliotecaSystem {
 
     }
 
-    public void printList(ArrayList<? extends checkableItem> items, Boolean available) {
+    public void printList(ArrayList<? extends CheckableItem> items, Boolean available) {
 
-        for (checkableItem item : items) {
+        for (CheckableItem item : items) {
 
             if (item.isAvailable() == available) {
                 printer.print(item.getInfo());

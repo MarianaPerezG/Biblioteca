@@ -3,7 +3,10 @@ package com.twu.biblioteca;
 import com.twu.Helpers.*;
 
 import com.twu.Item.Book;
+import com.twu.Item.CheckableItem;
 import com.twu.Item.Movie;
+
+import java.util.ArrayList;
 
 public class BibliotecaApp {
 
@@ -39,9 +42,6 @@ public class BibliotecaApp {
 
     public static void manageOption(String input){
 
-        boolean readyToCheckOut = false;
-        boolean readyToCheckIn = false;
-
         try{
             int option = Integer.parseInt(input);
             switch(option){
@@ -49,37 +49,20 @@ public class BibliotecaApp {
                     bibliotecaSys.printList(biblioteca.getBookList(), true);
                     break;
                 case 2:
-                    while(!readyToCheckOut){
-                        String reference = getItemReference();
-                        readyToCheckOut = bibliotecaSys.manageResponseToCheckoutBook(reference);
-                    }
+                    bibliotecaSys.manageBookCheckOut(getItemReference());
                     break;
-
                 case 3:
-                    while(!readyToCheckIn){
-                        String reference = getItemReference();
-                        readyToCheckIn = bibliotecaSys.manageResponseToCheckInBook(reference);
-                    }
+                    bibliotecaSys.manageBookCheckIn(getItemReference());
                     break;
-
                 case 4:
                     bibliotecaSys.printList(biblioteca.getMovieList(), true);
                     break;
-
                 case 5:
-                    while(!readyToCheckOut){
-                        String reference = getItemReference();
-                        readyToCheckOut = bibliotecaSys.manageResponseToCheckoutMovie(reference);
-                    }
+                    bibliotecaSys.manageMovieCheckOut(getItemReference());
                     break;
-
                 case 6:
-                    while(!readyToCheckIn){
-                        String reference = getItemReference();
-                        readyToCheckIn = bibliotecaSys.manageResponseToCheckInMovie(reference);
-                    }
+                    bibliotecaSys.manageMovieCheckIn(getItemReference());
                     break;
-
                 case 7:
                     printer.print(biblioteca.giveGoodBye());
                     System.exit(0);
@@ -92,7 +75,7 @@ public class BibliotecaApp {
     }
 
     public static String getItemReference() {
-        printer.print(Messages.SELECT_MESSAGE);
+        printer.printWithColor(Messages.SELECT_MESSAGE, "BLUE");
         return inputReader.getInput();
     }
 
@@ -107,4 +90,6 @@ public class BibliotecaApp {
         biblioteca.movieList.add(new Movie("Random", "Mariana Perez", 2018, 2.0f));
 
     }
+
+
 }
