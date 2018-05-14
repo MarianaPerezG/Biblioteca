@@ -14,12 +14,12 @@ public class BookTest {
     }
 
     @Test
-    public void checkIfBookisAvaliable(){
+    public void shouldCheckIfBookIsAvailable(){
         assertEquals(book.isAvailable(), true);
     }
 
     @Test
-    public void testMarkingTakenABook(){
+    public void shouldMarkTakenABook(){
         assertEquals(book.isAvailable(), true);
         book.checkOut();
         assertEquals(book.isAvailable(), false);
