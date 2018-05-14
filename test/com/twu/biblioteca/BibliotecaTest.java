@@ -1,9 +1,7 @@
 package com.twu.biblioteca;
 
-import com.twu.Item.Book;
-import com.twu.Helpers.InputReader;
-import com.twu.Helpers.Printer;
-import com.twu.Helpers.Menu;
+import com.twu.Helpers.*;
+import com.twu.Item.*;
 
 import static org.junit.Assert.*;
 
@@ -16,23 +14,31 @@ public class BibliotecaTest {
 
     public Biblioteca biblioteca;
     public Book book;
+    public Movie movie;
 
     @Before
     public void setUp() {
 
         biblioteca = new Biblioteca("Test");
         book = new Book("Test", "Test Author", 2018);
+        movie = new Movie("Test Movie", "Test director", 2018, 5.0f);
         biblioteca.getBookList().add(book);
+        biblioteca.getMovieList().add(movie);
     }
 
     @Test
     public void shouldReturnWelcomeMessageWithName(){
 
-        assertEquals(biblioteca.welcomeMessage(), "Test");
+        assertEquals(biblioteca.welcomeMessage(), "Welcome to Test");
     }
 
     @Test
-    public void testThatGetBooksInListFindsABookThatAvailable(){
+    public void shouldReturnGoodbyeMessage(){
+        assertEquals(biblioteca.giveGoodBye(), Messages.GOODBYE_MESSAGE);
+    }
+
+    @Test
+    public void shouldGetBooksInListThatAreAvailable(){
 
         ArrayList<Book> correctArray = new ArrayList<Book>();
         correctArray.add(book);
@@ -41,13 +47,28 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void testThatGetBooksListReturnsEmptyArrayListIfNotMatchFoundAvailable(){
+    public void shouldGetMoviesInListThatAreAvailable(){
+
+        ArrayList<Movie> correctArray = new ArrayList<Movie>();
+        correctArray.add(movie);
+
+        assertEquals(biblioteca.getMoviesMatchingInList("Te", true), correctArray);
+    }
+
+    @Test
+    public void shouldReturnEmptyArrayListIfNotMatchBookFoundAvailable(){
         ArrayList<Book> correctArray = new ArrayList<Book>();
         assertEquals(biblioteca.getBooksMatchingInList("Random String", true), correctArray);
     }
 
     @Test
-    public void testThatGetBooksInListFindsABookThatNotAvailable(){
+    public void shouldReturnEmptyArrayListIfNotMatchMovieFoundAvailable(){
+        ArrayList<Movie> correctArray = new ArrayList<Movie>();
+        assertEquals(biblioteca.getMoviesMatchingInList("Random String", true), correctArray);
+    }
+
+    @Test
+    public void shouldGetBooksInListThatAreNotAvailable(){
 
         ArrayList<Book> correctArray = new ArrayList<Book>();
         book.checkOut();
@@ -56,6 +77,14 @@ public class BibliotecaTest {
         assertEquals(biblioteca.getBooksMatchingInList("Te", false), correctArray);
     }
 
+    @Test
+    public void shouldGetMoviesInListThatAreNotAvailable(){
 
+        ArrayList<Movie> correctArray = new ArrayList<Movie>();
+        movie.checkOut();
+        correctArray.add(movie);
+
+        assertEquals(biblioteca.getMoviesMatchingInList("Te", false), correctArray);
+    }
 
 }
