@@ -1,4 +1,4 @@
-package com.twu.Item;
+package com.twu.Models;
 
 public class Movie implements CheckableItem {
 

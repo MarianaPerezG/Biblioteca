@@ -1,4 +1,4 @@
-package com.twu.Item;
+package com.twu.Models;
 
 public class Book implements CheckableItem {
 

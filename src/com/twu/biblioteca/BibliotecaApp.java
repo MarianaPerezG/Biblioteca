@@ -2,11 +2,8 @@ package com.twu.biblioteca;
 
 import com.twu.Helpers.*;
 
-import com.twu.Item.Book;
-import com.twu.Item.CheckableItem;
-import com.twu.Item.Movie;
-
-import java.util.ArrayList;
+import com.twu.Models.Book;
+import com.twu.Models.Movie;
 
 public class BibliotecaApp {
 

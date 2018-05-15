@@ -1,4 +1,4 @@
-package com.twu.Item;
+package com.twu.Models;
 
 import org.junit.Before;
 import org.junit.Test;

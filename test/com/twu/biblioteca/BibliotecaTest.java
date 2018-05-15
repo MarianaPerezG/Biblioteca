@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.Helpers.*;
-import com.twu.Item.*;
+import com.twu.Models.*;
 
 import static org.junit.Assert.*;
 
@@ -27,64 +27,89 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void shouldReturnWelcomeMessageWithName(){
-
-        assertEquals(biblioteca.welcomeMessage(), "Welcome to Test");
+    public void shouldReturnWelcomeMessageWithName(){\
+//        given
+        String correctMessage = "Welcome to Test";
+//        when
+        String returnedMessage = biblioteca.welcomeMessage();
+//        then
+        assertEquals(returnedMessage,correctMessage);
     }
 
     @Test
     public void shouldReturnGoodbyeMessage(){
-        assertEquals(biblioteca.giveGoodBye(), Messages.GOODBYE_MESSAGE);
+//        given
+        String correctMessage = Messages.GOODBYE_MESSAGE;
+//        when
+        String returnedMessage = biblioteca.giveGoodBye();
+//        then
+        assertEquals(returnedMessage,correctMessage );
     }
 
     @Test
     public void shouldGetBooksInListThatAreAvailable(){
-
+//        given
         ArrayList<Book> correctArray = new ArrayList<Book>();
+//        when
         correctArray.add(book);
-
-        assertEquals(biblioteca.getBooksMatchingInList("Te", true), correctArray);
+        ArrayList<Book> returnedArray = biblioteca.getBooksMatchingInList("Te", true);
+//        then
+        assertEquals(returnedArray, correctArray);
     }
 
     @Test
     public void shouldGetMoviesInListThatAreAvailable(){
-
+//        given
         ArrayList<Movie> correctArray = new ArrayList<Movie>();
+//        when
         correctArray.add(movie);
-
-        assertEquals(biblioteca.getMoviesMatchingInList("Te", true), correctArray);
+        ArrayList<Movie> returnedArray = biblioteca.getMoviesMatchingInList("Te", true);
+//        then
+        assertEquals(returnedArray, correctArray);
     }
 
     @Test
     public void shouldReturnEmptyArrayListIfNotMatchBookFoundAvailable(){
+//        given
         ArrayList<Book> correctArray = new ArrayList<Book>();
-        assertEquals(biblioteca.getBooksMatchingInList("Random String", true), correctArray);
+//        when
+        ArrayList<Book> returnedArray = biblioteca.getBooksMatchingInList("Random String", true);
+//        then
+        assertEquals(returnedArray, correctArray);
     }
 
     @Test
     public void shouldReturnEmptyArrayListIfNotMatchMovieFoundAvailable(){
+//        given
         ArrayList<Movie> correctArray = new ArrayList<Movie>();
-        assertEquals(biblioteca.getMoviesMatchingInList("Random String", true), correctArray);
+//        when
+        ArrayList<Movie> returnedArray = biblioteca.getMoviesMatchingInList("Random String", true);
+//        then
+        assertEquals(returnedArray, correctArray);
     }
 
     @Test
     public void shouldGetBooksInListThatAreNotAvailable(){
-
+//        given
         ArrayList<Book> correctArray = new ArrayList<Book>();
+//        when
         book.setCheckedOut();
         correctArray.add(book);
-
-        assertEquals(biblioteca.getBooksMatchingInList("Te", false), correctArray);
+        ArrayList<Book> returnedArray = biblioteca.getBooksMatchingInList("Te", false);
+//        then
+        assertEquals(returnedArray, correctArray);
     }
 
     @Test
     public void shouldGetMoviesInListThatAreNotAvailable(){
-
+//        given
         ArrayList<Movie> correctArray = new ArrayList<Movie>();
+//        when
         movie.setCheckedOut();
         correctArray.add(movie);
-
-        assertEquals(biblioteca.getMoviesMatchingInList("Te", false), correctArray);
+        ArrayList<Movie> returnedArray = biblioteca.getMoviesMatchingInList("Te", false);
+//        then
+        assertEquals(returnedArray, correctArray);
     }
 
 }
