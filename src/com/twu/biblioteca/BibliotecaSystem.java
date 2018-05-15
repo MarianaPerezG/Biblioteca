@@ -19,7 +19,7 @@ public class BibliotecaSystem {
         if(items.size() == 1){
             return true;
         }else if(items.size() == 0){
-            printer.printWithColor(Messages.EMPTY_BOOK_LIST, "RED");
+            printer.printWithColor(Messages.EMPTY_LIST, "RED");
 
         }else{
             printer.printWithColor(Messages.SELECT_OPTION, "BLUE");
@@ -37,7 +37,7 @@ public class BibliotecaSystem {
             checkOut(selectedBooks.get(0));
             return true;
         }
-
+        printer.printWithColor(Messages.CHECKOUT_UNSUCCESSFUL, "RED");
         return false;
 
     }
@@ -48,6 +48,7 @@ public class BibliotecaSystem {
             checkIn(selectedBooks.get(0));
             return true;
         }
+        printer.printWithColor(Messages.RETURN_UNSUCCESSFUL, "RED");
         return false;
     }
 
@@ -57,15 +58,17 @@ public class BibliotecaSystem {
             checkOut(selectedMovies.get(0));
             return true;
         }
-
+        printer.printWithColor(Messages.CHECKOUT_UNSUCCESSFUL, "RED");
         return false;
     }
 
     public boolean manageMovieCheckIn(String option){
         ArrayList<Movie> selectedMovies = biblioteca.getMoviesMatchingInList(option , false);
-        if (isReadyToCheck(selectedMovies)){
+        if (isReadyToCheck(selectedMovies) && !selectedMovies.get(0).isAvailable()){
             checkIn(selectedMovies.get(0));
+            return true;
         }
+        printer.printWithColor(Messages.RETURN_UNSUCCESSFUL, "RED");
         return false;
     }
 
@@ -78,7 +81,6 @@ public class BibliotecaSystem {
             return true ;
 
         } else {
-            printer.printWithColor(Messages.CHECKOUT_UNSUCCESSFUL, "RED");
             return false;
         }
     }
@@ -89,10 +91,9 @@ public class BibliotecaSystem {
             item.setCheckedIn();
             printer.printWithColor(Messages.RETURN_INFO + " " + item.getInfo(), "GREEN");
             printer.printWithColor(Messages.RETURN_SUCCESSFUL, "GREEN");
-            return true ;
+            return true;
 
         } else {
-            printer.printWithColor(Messages.RETURN_UNSUCCESSFUL, "RED");
             return false;
         }
 
@@ -100,6 +101,7 @@ public class BibliotecaSystem {
 
     public void printList(ArrayList<? extends CheckableItem> items, Boolean available) {
 
+        System.out.println("HERE");
         for (CheckableItem item : items) {
 
             if (item.isAvailable() == available) {

@@ -5,6 +5,10 @@ import com.twu.Models.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+
 import static org.junit.Assert.*;
 
 public class BibliotecaSystemTest {
@@ -16,72 +20,247 @@ public class BibliotecaSystemTest {
     public Printer printer;
     public InputReader inputreader;
     public String input;
+    public OutputStream output;
 
     @Before
     public void setUp() {
 
         printer = new Printer();
         biblioteca = new Biblioteca("Test");
-        book = new Book("Test", "Test Author", 2018);
-        movie = new Movie("Test Movie", "Test director", 2018, 5.0f);
-        biblioteca.getBookList().add(book);
         bibliotecaSys = new BibliotecaSystem(biblioteca, printer);
-        biblioteca.getMovieList().add(movie);
 
+    }
+
+    public void bibliotecaWithBook(){
+        book = new Book("Test", "Test Author", 2018);
+        biblioteca.getBookList().add(book);
+
+    }
+
+    public void bibliotecaWithMovie(){
+        movie = new Movie("Test Movie", "Test director", 2018, 5.0f);
+        biblioteca.getMovieList().add(movie);
+    }
+
+    public OutputStream theOutput(){
+        output = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(output);
+        System.setOut(ps);
+        return output;
     }
 
     @Test
     public void shouldCheckOutAnAvailableBook(){
-        assertEquals(bibliotecaSys.manageBookCheckOut(book.getName()), true);
+//        given
+        bibliotecaWithBook();
+//        when
+        String correctBookName = book.getName();
+        boolean returned = bibliotecaSys.manageBookCheckOut(correctBookName);
+//        then
+        assertEquals(returned, true);
+    }
+
+    @Test
+    public void shouldNotAllowCheckOutIfNotMatchingBook(){
+//        given
+        bibliotecaWithBook();
+//        when
+        String nameOfBook = "Random";
+        boolean returned = bibliotecaSys.manageBookCheckOut(nameOfBook);
+//        then
+        assertEquals(returned, false);
     }
 
     @Test
     public void shouldNotCheckOutIfAnUnavailableBook(){
+//        given
+        bibliotecaWithBook();
+//        when
+        String nameOfBook = book.getName();
         book.setCheckedOut();
-        assertEquals(bibliotecaSys.manageBookCheckOut(book.getName()), false);
+        boolean returned = bibliotecaSys.manageBookCheckOut(nameOfBook);
+//        then
+        assertEquals(returned, false);
+    }
+
+    @Test
+    public void shouldReturnUnavailableItemMessageIfBookIsUnavailable(){
+//        given
+        bibliotecaWithBook();
+//        when
+        String nameOfBook = book.getName();
+        book.setCheckedOut();
+        OutputStream output = theOutput();
+        bibliotecaSys.manageBookCheckOut(nameOfBook);
+        String correctMessage = Messages.EMPTY_LIST;
+//        then
+        assertTrue(output.toString().contains(correctMessage));
+    }
+
+    @Test
+    public void shouldReturnSelectOptionMessageWhenMultipleBookResultsAvailable(){
+//        given
+        bibliotecaWithBook();
+        biblioteca.getBookList().add(new Book( "Test Book", "New Author", 2010));
+//        when
+        String nameOfBook = "Test";
+        OutputStream output = theOutput();
+        bibliotecaSys.manageBookCheckOut(nameOfBook);
+        String correctMessage = Messages.SELECT_OPTION;
+//        then
+        assertTrue(output.toString().contains(correctMessage));
 
     }
 
     @Test
-    public void shouldNotCheckOutIfAnUnavailableMovie(){
-        //given
-
-        //when
-        movie.setCheckedOut();
-
-        //then
-        assertEquals(bibliotecaSys.manageMovieCheckOut(movie.getName()), false);
-    }
-
-        @Test
-    public void shouldNotAllowCheckOutIfNotMatchingBook(){
-
-        assertEquals(bibliotecaSys.manageBookCheckOut("Random"), false);
-
+    public void shouldNotCheckInAnAvailableBook(){
+//        given
+        bibliotecaWithBook();
+//        when
+        String correctBookName = book.getName();
+        boolean returned = bibliotecaSys.manageBookCheckIn(correctBookName);
+//        then
+        assertEquals(returned, false);
     }
 
     @Test
-    public void shouldAllowCheckOutIfNotMatchingBook(){
+    public void shouldCheckInATakenBook(){
+//        given
+        bibliotecaWithBook();
+//        when
+        String correctBookName = book.getName();
+        book.setCheckedOut();
+        boolean returned = bibliotecaSys.manageBookCheckIn(correctBookName);
+//        then
+        assertEquals(returned, true);
+    }
 
-        assertEquals(bibliotecaSys.manageBookCheckOut("Test"), true);
-        assertEquals(book.isAvailable(), false);
-
+    @Test
+    public void shouldAllowCheckOutIfAvailableMovie(){
+//        given
+        bibliotecaWithMovie();
+//        when
+        String correctMovieName = movie.getName();
+        boolean returned = bibliotecaSys.manageMovieCheckOut(correctMovieName);
+//        then
+        assertEquals(returned, true);
     }
 
     @Test
     public void shouldNotAllowCheckOutIfNotMatchingMovie(){
+//        given
+        bibliotecaWithMovie();
+//        when
+        String nameOfMovie = "Random";
+        boolean returned = bibliotecaSys.manageMovieCheckOut(nameOfMovie);
+//        then
+        assertEquals(returned, false);
+    }
 
-        assertEquals(bibliotecaSys.manageMovieCheckOut("Random"), false);
+    @Test
+    public void shouldNotCheckOutIfAnUnavailableMovie(){
+//        given
+        bibliotecaWithMovie();
+//        when
+        String nameOfMovie = movie.getName();
+        movie.setCheckedOut();
+        boolean returned = bibliotecaSys.manageMovieCheckOut(nameOfMovie);
+//        then
+        assertEquals(returned, false);
+    }
+
+    @Test
+    public void shouldReturnUnavailableItemMessageIfMovieIsUnavailable(){
+//        given
+        bibliotecaWithMovie();
+//        when
+        String nameOfMovie = movie.getName();
+        movie.setCheckedOut();
+        OutputStream output = theOutput();
+        bibliotecaSys.manageMovieCheckOut(nameOfMovie);
+        String correctMessage = Messages.EMPTY_LIST;
+//        then
+        assertTrue(output.toString().contains(correctMessage));
+    }
+
+    @Test
+    public void shouldReturnSelectOptionMessageWhenMultipleMovieResultsAvailable(){
+//        given
+        bibliotecaWithMovie();
+        biblioteca.getMovieList().add(new Movie( "Test Movie 2", "New Director", 2010,  6.4f));
+//        when
+        String nameOfMovie = "Test";
+        OutputStream output = theOutput();
+        bibliotecaSys.manageMovieCheckOut(nameOfMovie);
+        String correctMessage = Messages.SELECT_OPTION;
+//        then
+        assertTrue(output.toString().contains(correctMessage));
 
     }
 
     @Test
-    public void shouldAllowCheckOutIfMatchingMovie(){
+    public void shouldNotCheckInAnAvailableMovie(){
+//        given
+        bibliotecaWithMovie();
+//        when
+        String correctMovieName = movie.getName();
+        boolean returned = bibliotecaSys.manageMovieCheckIn(correctMovieName);
+//        then
+        assertEquals(returned, false);
+    }
 
-        assertEquals(movie.isAvailable(), true);
-        assertEquals(bibliotecaSys.manageMovieCheckOut("Test"), true);
-        assertEquals(movie.isAvailable(), false);
+    @Test
+    public void shouldCheckInATakenMovie(){
+//        given
+        bibliotecaWithMovie();
+//        when
+        String correctMovieName = movie.getName();
+        movie.setCheckedOut();
+        boolean returned = bibliotecaSys.manageMovieCheckIn(correctMovieName);
+//        then
+        assertEquals(returned, true);
+    }
 
+    @Test
+    public void shouldPrintOnlyTheAvailableBooksOnTheList(){
+//        given
+        bibliotecaWithBook();
+        biblioteca.getBookList().add(new Book("Book for testing", "Mariana Perez", 1998));
+//        when
+        OutputStream output = theOutput();
+        bibliotecaSys.printList(biblioteca.getBookList(), true);
+        String correctString = "Book for testing by Mariana Perez. Year of Publish: 1998";
+//        then
+        assertTrue(output.toString().contains(correctString));
+
+    }
+
+    @Test
+    public void shouldPrintEnjoyMessageWhenCorrectCheckOut(){
+        //        given
+        bibliotecaWithBook();
+//        when
+        String nameOfBook = book.getName();
+        OutputStream output = theOutput();
+        bibliotecaSys.manageBookCheckOut(nameOfBook);
+        String correctMessage = Messages.CHECKOUT_SUCCESSFUL;
+//        then
+        assertTrue(output.toString().contains(correctMessage));
+
+    }
+
+    @Test
+    public void shouldPrintUnsuccessfulMessageWhenFailedCheckOutBecauseUnavailable(){
+        //        given
+        bibliotecaWithBook();
+//        when
+        book.setCheckedOut();
+        String nameOfBook = book.getName();
+        OutputStream output = theOutput();
+        bibliotecaSys.manageBookCheckOut(nameOfBook);
+        String correctMessage = Messages.CHECKOUT_UNSUCCESSFUL;
+//        then
+        assertTrue(output.toString().contains(correctMessage));
     }
 
 }
