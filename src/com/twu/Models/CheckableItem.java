@@ -1,6 +1,6 @@
 package com.twu.Item;
 
-public interface CheckableItem extends printableObject{
+public interface CheckableItem extends PrintableObject {
 
     void setCheckedOut();
 

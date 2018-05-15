@@ -1,6 +1,6 @@
 package com.twu.Item;
 
-public interface printableObject {
+public interface PrintableObject {
 
     String getInfo();
 }
