@@ -42,11 +42,6 @@ public class BibliotecaSystemTest {
 
     }
 
-//    @Test
-//    public void shouldCheckOutIfAnAvailableMovie(){
-//        assertEquals(bibliotecaSys.manageMovieCheckOut(movie.getName()), true);
-//    }
-
     @Test
     public void shouldNotCheckOutIfAnUnavailableMovie(){
         //given

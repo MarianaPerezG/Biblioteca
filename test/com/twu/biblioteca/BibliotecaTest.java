@@ -27,7 +27,7 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void shouldReturnWelcomeMessageWithName(){\
+    public void shouldReturnWelcomeMessageWithName(){
 //        given
         String correctMessage = "Welcome to Test";
 //        when
