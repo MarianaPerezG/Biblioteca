@@ -39,7 +39,7 @@ public class User {
 
     public String getInfo(){
 
-        return String.format("Name: %s %s email: %s phone: %s", this.getName(), this.getSurname(),this.getEmail(), this.getPhone());
+        return String.format("Name: %s %s  |   email: %s  |   phone: %s", this.getName(), this.getSurname(),this.getEmail(), this.getPhone());
     }
 
     public boolean isPasswordCorrect(String passwordToCheck){

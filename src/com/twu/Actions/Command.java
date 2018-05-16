@@ -11,15 +11,13 @@ public abstract class Command {
     public Printer printer;
     public InputReader inputReader;
     public BibliotecaManager bibliotecaManager;
-    public boolean forAdmin = false;
 
-    public Command(String name, Integer id, Printer printer, InputReader inputReader, BibliotecaManager bibliotecaManager, Boolean forAdmin) {
+    public Command(String name, Integer id, Printer printer, InputReader inputReader, BibliotecaManager bibliotecaManager) {
         this.name = name;
         this.id = id;
         this.printer = printer;
         this.inputReader = inputReader;
         this.bibliotecaManager = bibliotecaManager;
-        this.forAdmin = forAdmin;
     }
 
     public void executeAction(){}

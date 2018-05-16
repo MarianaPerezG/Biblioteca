@@ -23,14 +23,15 @@ public class Menu {
 
     private void setUp() {
 
-        PrintBookList printBook = new PrintBookList("Book List", 1, printer,inputReader, bibliotecaMan, false);
-        BookCheckOut bookCheckOut = new BookCheckOut("Checkout Book", 2, printer,inputReader, bibliotecaMan, false);
-        BookCheckIn bookCheckIn = new BookCheckIn("Return Book", 3, printer,inputReader, bibliotecaMan,false);
-        PrintMovieList printMovieList = new PrintMovieList("Movie List", 4, printer,inputReader, bibliotecaMan,false);
-        MovieCheckOut movieCheckOut = new MovieCheckOut("Checkout Movie", 5, printer,inputReader, bibliotecaMan,false);
-        MovieCheckIn movieCheckIn = new MovieCheckIn("Return Movie", 6, printer,inputReader, bibliotecaMan,false);
-        UserInformation userinformation = new UserInformation("My User Information", 7, printer,inputReader, bibliotecaMan, false);
-        Exit exit = new Exit("Exit", 8, printer,inputReader, bibliotecaMan,false);
+        PrintBookList printBook = new PrintBookList("Book List", 1, printer,inputReader, bibliotecaMan);
+        BookCheckOut bookCheckOut = new BookCheckOut("Checkout Book", 2, printer,inputReader, bibliotecaMan);
+        BookCheckIn bookCheckIn = new BookCheckIn("Return Book", 3, printer,inputReader, bibliotecaMan);
+        PrintMovieList printMovieList = new PrintMovieList("Movie List", 4, printer,inputReader, bibliotecaMan);
+        MovieCheckOut movieCheckOut = new MovieCheckOut("Checkout Movie", 5, printer,inputReader, bibliotecaMan);
+        MovieCheckIn movieCheckIn = new MovieCheckIn("Return Movie", 6, printer,inputReader, bibliotecaMan);
+        UserInformation userinformation = new UserInformation("My User Information", 7, printer,inputReader, bibliotecaMan);
+        LoansInformation loansinformation = new LoansInformation("Loans Information", 8, printer,inputReader, bibliotecaMan);
+        Exit exit = new Exit("Exit", 9, printer,inputReader, bibliotecaMan);
 
 
         comandoLines.put(printBook.getId().toString(), printBook);
@@ -41,6 +42,7 @@ public class Menu {
         comandoLines.put(movieCheckIn.getId().toString(), movieCheckIn);
         comandoLines.put(exit.getId().toString(), exit);
         comandoLines.put(userinformation.getId().toString(), userinformation);
+        comandoLines.put(loansinformation.getId().toString(), loansinformation);
 
     }
 

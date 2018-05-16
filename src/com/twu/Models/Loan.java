@@ -17,7 +17,6 @@ public class Loan {
         return item;
     }
 
-
     public boolean isLoan(User user, CheckableItem item) {
 
         if(user == this.getUser() && item == this.getItem()  ){
@@ -25,6 +24,15 @@ public class Loan {
         }
 
         return false;
+    }
+
+    public String getInfoAdmin(){
+
+        return String.format("User: %s    Item: %s ", this.user.getInfo(), this.item.getInfo() );
+    }
+
+    public String getInfo(){
+        return String.format("%s ", this.item.getInfo() );
     }
 
 }

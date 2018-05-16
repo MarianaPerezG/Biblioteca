@@ -8,8 +8,8 @@ import com.twu.biblioteca.BibliotecaManager;
 
 public class UserInformation extends Command {
 
-    public UserInformation(String name, Integer id, Printer printer, InputReader inputReader, BibliotecaManager bibliotecaManager, Boolean forAdmin) {
-        super(name, id, printer, inputReader, bibliotecaManager, forAdmin);
+    public UserInformation(String name, Integer id, Printer printer, InputReader inputReader, BibliotecaManager bibliotecaManager) {
+        super(name, id, printer, inputReader, bibliotecaManager);
     }
 
     public void executeAction(){ printer.print(bibliotecaManager.getLoggedUser().getInfo());}

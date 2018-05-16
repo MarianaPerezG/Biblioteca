@@ -7,8 +7,8 @@ import com.twu.Helpers.*;
 
 public class BookCheckOut extends Command {
 
-    public BookCheckOut(String name, Integer id, Printer printer, InputReader inputReader, BibliotecaManager bibliotecaManager, Boolean forAdmin) {
-        super(name, id, printer, inputReader, bibliotecaManager, forAdmin);
+    public BookCheckOut(String name, Integer id, Printer printer, InputReader inputReader, BibliotecaManager bibliotecaManager) {
+        super(name, id, printer, inputReader, bibliotecaManager);
     }
 
     public void executeAction(){

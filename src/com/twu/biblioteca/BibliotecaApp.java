@@ -20,7 +20,6 @@ public class BibliotecaApp {
 
         biblioteca = new Biblioteca("The Bangalore Public Library");
         bibliotecaManager = new BibliotecaManager(biblioteca, printer);
-        menu = new Menu(bibliotecaManager, inputReader);
         authenticator = new Authenticator(bibliotecaManager);
 
         addDB(biblioteca);
@@ -54,6 +53,8 @@ public class BibliotecaApp {
 
     public static void init(){
 
+        menu = new Menu(bibliotecaManager, inputReader);
+
         while (true) {
             menu.printMenu();
             String input = inputReader.getInput();
@@ -68,17 +69,23 @@ public class BibliotecaApp {
 
     public static void addDB(Biblioteca biblioteca){
 
+        Book randomBook = new Book("Something Random", "Kylie Jenner", 2018);
+        User randomUser = new User("Mariana", "Perez","123-123","password", "mperez@prueba.com", "555-55-55", false );
+
         biblioteca.getBookList().add(new Book("Living la vida loca", "Ricky Martin", 1989));
         biblioteca.getBookList().add(new Book("What life is all about", "Spongebob squarepants", 2010));
-        biblioteca.getBookList().add(new Book("Something Random", "Kylie Jenner", 2018));
+        biblioteca.getBookList().add(randomBook);
         biblioteca.getBookList().add(new Book("Liv Tyler Bio ", "Liv Tyler", 1980));
 
         biblioteca.getMovieList().add(new Movie("50 first Dates", "Peter Segal", 2004, 5.0f));
         biblioteca.getMovieList().add(new Movie("Random", "Mariana Perez", 2018, 2.0f));
 
-        biblioteca.getUserList().add(new User("Mariana", "Perez","123-123","password", "mperez@prueba.com", "555-55-55", false ));
+        biblioteca.getUserList().add(randomUser);
         biblioteca.getUserList().add(new User("Librarian", "User","111-111","admin", "librarian@prueba.com", "666-55-55", true ));
 
+        randomBook.setCheckedOut();
+        Loan loan = new Loan(randomUser, randomBook);
+        biblioteca.getLoanList().add(loan);
 
     }
 

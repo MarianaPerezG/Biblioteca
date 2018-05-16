@@ -180,5 +180,18 @@ public class BibliotecaManager {
         return false;
     }
 
+    public void getLoansInformation() {
+
+        for (Loan loan : biblioteca.getLoanList()) {
+
+            if (loggedUser.isAdmin()) {
+                printer.print(loan.getInfoAdmin());
+            } else {
+                if (loan.getUser() == loggedUser) {
+                    printer.print(loan.getInfo());
+                }
+            }
+        }
+    }
 
 }
