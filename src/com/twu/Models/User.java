@@ -43,17 +43,20 @@ public class User {
     }
 
     public boolean isPasswordCorrect(String passwordToCheck){
-        if(passwordToCheck.equals(this.password)){
-            return true;
-        }
-        return false;
+        return passwordToCheck.equals(this.password);
     }
 
     public void logIn(){
         this.loggedIn = true;
     }
 
+    public String getLibraryNumber() {
+        return libraryNumber;
+    }
+
     public void logOut(){
         this.loggedIn = false;
     }
+
+
 }

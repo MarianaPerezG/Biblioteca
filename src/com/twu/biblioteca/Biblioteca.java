@@ -17,6 +17,8 @@ public class Biblioteca {
         this.name = name;
         this.bookList = new ArrayList<Book>();
         this.movieList = new ArrayList<Movie>();
+        this.userList = new ArrayList<User>();
+        this.loanList = new ArrayList<Loan>();
     }
 
     public String welcomeMessage() {

@@ -16,4 +16,8 @@ public class Messages {
     public static final String RETURN_SUCCESSFUL = "Thank you for returning the item";
     public static final String RETURN_INFO = "You jus returned the item:";
     public static final String RETURN_UNSUCCESSFUL = "That is not a valid item to return.";
+    public static final String GET_USER_LIBRARYNUMBER = "Library Number:";
+    public static final String GET_USER_PASSWORD = "Password:";
+    public static final String INCORRECT_LOGIN = "Sorry, the information is not correct. Try Again.";
+
 }

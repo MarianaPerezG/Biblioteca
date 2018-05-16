@@ -1,5 +1,6 @@
 package com.twu.Models;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -8,6 +9,7 @@ public class UserTest {
 
     public User user;
 
+    @Before
     public void aUser(){
         user = new User("Mariana", "Perez", "123-123", "password", "mperez@email.com", "555-55-55", false);
     }
@@ -46,5 +48,6 @@ public class UserTest {
 //        then
         assertFalse(passwordCorrect);
     }
+
 
 }

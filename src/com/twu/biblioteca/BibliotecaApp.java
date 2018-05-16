@@ -19,17 +19,38 @@ public class BibliotecaApp {
 
         biblioteca = new Biblioteca("The Bangalore Public Library");
         bibliotecaManager = new BibliotecaManager(biblioteca, printer);
-
         menu = new Menu(bibliotecaManager, inputReader);
 
         addDB(biblioteca);
-        init();
+
+        bibliotecaManager.giveWelcome();
+        login();
+
+    }
+
+    public static void login(){
+
+        boolean accessGranted = false;
+
+        while(!accessGranted){
+            printer.print(Messages.GET_USER_LIBRARYNUMBER);
+            String libraryNumber = inputReader.getInput();
+            printer.print(Messages.GET_USER_PASSWORD);
+            String password = inputReader.getInput();
+
+            accessGranted = bibliotecaManager.giveAccess(libraryNumber, password);
+g
+            if(accessGranted){
+                init();
+            }else{
+                printer.printWithColor(Messages.INCORRECT_LOGIN, "RED");
+            }
+
+        }
 
     }
 
     public static void init(){
-
-        bibliotecaManager.giveWelcome();
 
         while (true) {
             menu.printMenu();
@@ -43,7 +64,6 @@ public class BibliotecaApp {
         }
     }
 
-
     public static void addDB(Biblioteca biblioteca){
 
         biblioteca.getBookList().add(new Book("Living la vida loca", "Ricky Martin", 1989));
@@ -54,8 +74,8 @@ public class BibliotecaApp {
         biblioteca.getMovieList().add(new Movie("50 first Dates", "Peter Segal", 2004, 5.0f));
         biblioteca.getMovieList().add(new Movie("Random", "Mariana Perez", 2018, 2.0f));
 
-//        biblioteca.getUserList().add(new User("Mariana", "Perez","123-123","password", "mperez@prueba.com", "555-55-55", false ));
-//        biblioteca.getUserList().add(new User("Librarian", "User","111-111","admin", "librarian@prueba.com", "666-55-55", true ));
+        biblioteca.getUserList().add(new User("Mariana", "Perez","123-123","password", "mperez@prueba.com", "555-55-55", false ));
+        biblioteca.getUserList().add(new User("Librarian", "User","111-111","admin", "librarian@prueba.com", "666-55-55", true ));
 
 
     }

@@ -1,9 +1,8 @@
 package com.twu.biblioteca;
 
 import com.twu.Helpers.*;
-import com.twu.biblioteca.BibliotecaManager;
 import com.twu.Models.*;
-import com.twu.biblioteca.Biblioteca;
+import static org.hamcrest.CoreMatchers.instanceOf;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,6 +19,7 @@ public class BibliotecaManagerTest {
     public Book book;
     public Movie movie;
     public Printer printer;
+    public User user;
     public InputReader inputreader;
     public String input;
     public OutputStream output;
@@ -42,6 +42,11 @@ public class BibliotecaManagerTest {
     public void bibliotecaWithMovie(){
         movie = new Movie("Test Movie", "Test director", 2018, 5.0f);
         biblioteca.getMovieList().add(movie);
+    }
+
+    public void bibliotecaWithUser(){
+        user = new User("Mariana", "Perez","123-123","password", "mperez@prueba.com", "555-55-55", false );
+        biblioteca.getUserList().add(user);
     }
 
     public OutputStream theOutput(){
@@ -250,5 +255,42 @@ public class BibliotecaManagerTest {
         assertTrue(output.toString().contains(correctMessage));
 
     }
+
+    @Test
+    public void shouldAllowLogInOfUserIfUserExistAndThePasswordIsCorrect(){
+//        given
+        bibliotecaWithUser();
+//        when
+        String libraryNumberCollected = "123-123";
+        String passwordCollected = "password";
+        boolean returned = bibliotecaSys.giveAccess(libraryNumberCollected, passwordCollected );
+//        then
+        assertTrue(returned);
+    }
+
+    @Test
+    public void shouldReturnUserIfLibraryNumberExist(){
+//        given
+        bibliotecaWithUser();
+//        when
+        String libraryNumberCollected = "123-123";
+        User returned = bibliotecaSys.getUserWithLibraryNumber(libraryNumberCollected);
+//        then
+        assertThat(returned, instanceOf(User.class));
+
+    }
+
+    @Test
+    public void shouldReturnTrueIfPasswordIsCorrect(){
+//        given
+        bibliotecaWithUser();
+//        when
+        String password = "password";
+        boolean returned = bibliotecaSys.passwordIsCorrectForUser(password, user);
+//        then
+        assertTrue(returned);
+
+    }
+
 
 }

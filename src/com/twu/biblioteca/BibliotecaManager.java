@@ -132,5 +132,34 @@ public class BibliotecaManager {
 
     }
 
+    public boolean giveAccess(String libraryNumber, String password) {
 
+        User userToLogin = getUserWithLibraryNumber(libraryNumber);
+
+        if( userToLogin != null){
+
+            if(passwordIsCorrectForUser(password, userToLogin)){
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+
+    public boolean passwordIsCorrectForUser(String password, User userToLogin) {
+
+        return userToLogin.isPasswordCorrect(password);
+    }
+
+    public User getUserWithLibraryNumber(String libraryNumber) {
+
+        for(User user:biblioteca.getUserList()){
+            if(user.getLibraryNumber().equals(libraryNumber)){
+                return user;
+            }
+        }
+
+        return null;
+    }
 }
