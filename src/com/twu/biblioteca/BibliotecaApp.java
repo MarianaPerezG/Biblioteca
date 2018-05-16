@@ -39,7 +39,7 @@ public class BibliotecaApp {
             String password = inputReader.getInput();
 
             accessGranted = bibliotecaManager.giveAccess(libraryNumber, password);
-g
+
             if(accessGranted){
                 init();
             }else{

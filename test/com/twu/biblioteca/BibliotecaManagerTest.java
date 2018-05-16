@@ -292,5 +292,21 @@ public class BibliotecaManagerTest {
 
     }
 
+    @Test
+    public void shouldAssignTheCurrentUserCorrectly(){
+//        given
+        bibliotecaWithUser();
+//        when
+        String libraryNumberCollected = "123-123";
+        String passwordCollected = "password";
+        boolean returned = bibliotecaSys.giveAccess(libraryNumberCollected, passwordCollected );
+        User correctUserLogedIn = user;
+        User userAssignedToManager = bibliotecaSys.getLoggedUser();
+//        then
+        assertTrue(returned);
+        assertEquals(correctUserLogedIn,userAssignedToManager);
+
+    }
+
 
 }

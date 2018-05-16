@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3de05fa-60f7-4792-8bc7-9f1acf42008d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca.iml" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/biblioteca/com/twu/Helpers/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/biblioteca/com/twu/Helpers/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/biblioteca/com/twu/biblioteca/Biblioteca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/biblioteca/com/twu/biblioteca/Biblioteca.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/biblioteca/com/twu/biblioteca/BibliotecaApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/biblioteca/com/twu/biblioteca/BibliotecaApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/twu/Helpers/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/twu/Helpers/Messages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/twu/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/twu/Models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/Biblioteca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/Biblioteca.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/twu/Models/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/twu/Models/UserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaManagerTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,13 +19,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BibliotecaApp.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BibliotecaApp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+            <state relative-caret-position="645">
+              <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#main#0;class#BibliotecaApp#0" />
+                <element signature="method#init#0;class#BibliotecaApp#0" />
+                <element signature="method#addDB#0;class#BibliotecaApp#0" />
               </folding>
             </state>
           </provider>
@@ -43,8 +37,8 @@
       <file leaf-file-name="BibliotecaManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="134" column="29" selection-start-line="134" selection-start-column="29" selection-end-line="134" selection-end-column="29" />
+            <state relative-caret-position="532">
+              <caret line="134" column="29" selection-start-line="134" selection-start-column="16" selection-end-line="134" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#BibliotecaManager#0;class#BibliotecaManager#0" />
@@ -57,6 +51,8 @@
                 <element signature="method#checkIn#0;class#BibliotecaManager#0" />
                 <element signature="method#printList#0;class#BibliotecaManager#0" />
                 <element signature="method#giveGoodBye#0;class#BibliotecaManager#0" />
+                <element signature="e#3767#3768#0" expanded="true" />
+                <element signature="e#3800#3801#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BibliotecaManagerTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BibliotecaManagerTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaManagerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="989">
-              <caret line="292" column="5" lean-forward="true" selection-start-line="292" selection-start-column="5" selection-end-line="292" selection-end-column="5" />
+            <state relative-caret-position="718">
+              <caret line="309" lean-forward="true" selection-start-line="309" selection-end-line="309" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#setUp#0;class#BibliotecaManagerTest#0" />
@@ -99,9 +95,7 @@
                 <element signature="method#shouldCheckInATakenMovie#0;class#BibliotecaManagerTest#0" />
                 <element signature="method#shouldPrintOnlyTheAvailableBooksOnTheList#0;class#BibliotecaManagerTest#0" />
                 <element signature="method#shouldPrintEnjoyMessageWhenCorrectCheckOut#0;class#BibliotecaManagerTest#0" />
-                <element signature="method#shouldAllowLogInOfUserIfUserExistAndThePasswordIsCorrect#0;class#BibliotecaManagerTest#0" />
                 <element signature="method#shouldReturnTrueIfUserExist#0;class#BibliotecaManagerTest#0" />
-                <element signature="method#shouldReturnTrueIfPasswordIsCorrect#0;class#BibliotecaManagerTest#0" />
               </folding>
             </state>
           </provider>
@@ -198,9 +192,9 @@
         <option value="$PROJECT_DIR$/src/com/twu/Helpers/Messages.java" />
         <option value="$PROJECT_DIR$/test/com/twu/Models/UserTest.java" />
         <option value="$PROJECT_DIR$/src/com/twu/Models/User.java" />
-        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaManagerTest.java" />
-        <option value="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaManager.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" />
+        <option value="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaManager.java" />
+        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaManagerTest.java" />
       </list>
     </option>
   </component>
@@ -370,6 +364,29 @@
       </option>
       <patterns />
     </configuration>
+    <configuration name="BibliotecaManagerTest.shouldAssignTheCurrentUserCorrectly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="biblioteca" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.twu.biblioteca.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
+      <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.BibliotecaManagerTest" />
+      <option name="METHOD_NAME" value="shouldAssignTheCurrentUserCorrectly" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
     <configuration name="BibliotecaManagerTest.shouldReturnTrueIfPasswordIsCorrect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="biblioteca" />
       <extension name="coverage">
@@ -407,29 +424,6 @@
       <option name="MAIN_CLASS_NAME" value="com.twu.Models.UserTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="UserTest.shouldValidateAsTrueACorrectPassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="biblioteca" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.twu.Models.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.twu.Models" />
-      <option name="MAIN_CLASS_NAME" value="com.twu.Models.UserTest" />
-      <option name="METHOD_NAME" value="shouldValidateAsTrueACorrectPassword" />
-      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -479,18 +473,18 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.UserTest" />
-      <item itemvalue="JUnit.UserTest.shouldValidateAsTrueACorrectPassword" />
       <item itemvalue="JUnit.BibliotecaManagerTest" />
       <item itemvalue="JUnit.BibliotecaManagerTest.shouldReturnTrueIfPasswordIsCorrect" />
       <item itemvalue="Application.BibliotecaApp" />
+      <item itemvalue="JUnit.BibliotecaManagerTest.shouldAssignTheCurrentUserCorrectly" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.BibliotecaApp" />
+        <item itemvalue="JUnit.BibliotecaManagerTest.shouldAssignTheCurrentUserCorrectly" />
         <item itemvalue="JUnit.BibliotecaManagerTest.shouldReturnTrueIfPasswordIsCorrect" />
         <item itemvalue="JUnit.BibliotecaManagerTest" />
         <item itemvalue="JUnit.UserTest" />
-        <item itemvalue="JUnit.UserTest.shouldValidateAsTrueACorrectPassword" />
       </list>
     </recent_temporary>
   </component>
@@ -556,7 +550,7 @@
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.3272727" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="5" sideWeight="0.49939394" visible="true" weight="0.17596567" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" sideWeight="0.49939394" visible="true" weight="0.17596567" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
       <window_info id="UI Designer" order="1" />
@@ -576,7 +570,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="84" />
+      <option name="time" value="85" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -1046,10 +1040,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#main#0;class#BibliotecaApp#0" />
+            <element signature="method#init#0;class#BibliotecaApp#0" />
+            <element signature="method#addDB#0;class#BibliotecaApp#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="134" column="29" selection-start-line="134" selection-start-column="16" selection-end-line="134" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#BibliotecaManager#0;class#BibliotecaManager#0" />
+            <element signature="method#isReadyToCheck#0;class#BibliotecaManager#0" />
+            <element signature="method#manageBookCheckOut#0;class#BibliotecaManager#0" />
+            <element signature="method#manageBookCheckIn#0;class#BibliotecaManager#0" />
+            <element signature="method#manageMovieCheckOut#0;class#BibliotecaManager#0" />
+            <element signature="method#manageMovieCheckIn#0;class#BibliotecaManager#0" />
+            <element signature="method#checkOut#0;class#BibliotecaManager#0" />
+            <element signature="method#checkIn#0;class#BibliotecaManager#0" />
+            <element signature="method#printList#0;class#BibliotecaManager#0" />
+            <element signature="method#giveGoodBye#0;class#BibliotecaManager#0" />
+            <element signature="e#3767#3768#0" expanded="true" />
+            <element signature="e#3800#3801#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaManagerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="989">
-          <caret line="292" column="5" lean-forward="true" selection-start-line="292" selection-start-column="5" selection-end-line="292" selection-end-column="5" />
+        <state relative-caret-position="718">
+          <caret line="309" lean-forward="true" selection-start-line="309" selection-end-line="309" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#setUp#0;class#BibliotecaManagerTest#0" />
@@ -1073,39 +1102,7 @@
             <element signature="method#shouldCheckInATakenMovie#0;class#BibliotecaManagerTest#0" />
             <element signature="method#shouldPrintOnlyTheAvailableBooksOnTheList#0;class#BibliotecaManagerTest#0" />
             <element signature="method#shouldPrintEnjoyMessageWhenCorrectCheckOut#0;class#BibliotecaManagerTest#0" />
-            <element signature="method#shouldAllowLogInOfUserIfUserExistAndThePasswordIsCorrect#0;class#BibliotecaManagerTest#0" />
             <element signature="method#shouldReturnTrueIfUserExist#0;class#BibliotecaManagerTest#0" />
-            <element signature="method#shouldReturnTrueIfPasswordIsCorrect#0;class#BibliotecaManagerTest#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="134" column="29" selection-start-line="134" selection-start-column="29" selection-end-line="134" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#BibliotecaManager#0;class#BibliotecaManager#0" />
-            <element signature="method#isReadyToCheck#0;class#BibliotecaManager#0" />
-            <element signature="method#manageBookCheckOut#0;class#BibliotecaManager#0" />
-            <element signature="method#manageBookCheckIn#0;class#BibliotecaManager#0" />
-            <element signature="method#manageMovieCheckOut#0;class#BibliotecaManager#0" />
-            <element signature="method#manageMovieCheckIn#0;class#BibliotecaManager#0" />
-            <element signature="method#checkOut#0;class#BibliotecaManager#0" />
-            <element signature="method#checkIn#0;class#BibliotecaManager#0" />
-            <element signature="method#printList#0;class#BibliotecaManager#0" />
-            <element signature="method#giveGoodBye#0;class#BibliotecaManager#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1127,7 +1124,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>

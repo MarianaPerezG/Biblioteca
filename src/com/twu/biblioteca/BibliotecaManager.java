@@ -132,6 +132,10 @@ public class BibliotecaManager {
 
     }
 
+    public User getLoggedUser() {
+        return loggedUser;
+    }
+
     public boolean giveAccess(String libraryNumber, String password) {
 
         User userToLogin = getUserWithLibraryNumber(libraryNumber);
@@ -139,12 +143,17 @@ public class BibliotecaManager {
         if( userToLogin != null){
 
             if(passwordIsCorrectForUser(password, userToLogin)){
+                assigeUser(userToLogin);
                 return true;
             }
 
         }
 
         return false;
+    }
+
+    private void assigeUser(User userToLogin) {
+        this.loggedUser = userToLogin;
     }
 
     public boolean passwordIsCorrectForUser(String password, User userToLogin) {
