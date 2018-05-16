@@ -12,7 +12,6 @@ public class BibliotecaManager {
     private Printer printer;
     private User loggedUser;
 
-
     public BibliotecaManager(Biblioteca biblioteca, Printer printer ){
         this.biblioteca = biblioteca;
         this.printer = printer;
@@ -173,5 +172,13 @@ public class BibliotecaManager {
     public User getLoggedUser() {
         return loggedUser;
     }
+
+    public boolean hasUser(){
+        if(loggedUser instanceof User){
+            return true;
+        }
+        return false;
+    }
+
 
 }

@@ -8,8 +8,8 @@ import com.twu.biblioteca.BibliotecaManager;
 
 public class MovieCheckIn extends Command {
 
-    public MovieCheckIn(String name, Integer id, Printer printer, InputReader inputReader, BibliotecaManager bibliotecaManager) {
-        super(name, id, printer, inputReader, bibliotecaManager);
+    public MovieCheckIn(String name, Integer id, Printer printer, InputReader inputReader, BibliotecaManager bibliotecaManager, Boolean forAdmin) {
+        super(name, id, printer, inputReader, bibliotecaManager, forAdmin);
     }
 
     public void executeAction(){

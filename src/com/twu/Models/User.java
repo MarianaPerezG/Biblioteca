@@ -58,5 +58,9 @@ public class User {
         this.loggedIn = false;
     }
 
+    public boolean isAdmin(){
+        return admin;
+    }
+
 
 }

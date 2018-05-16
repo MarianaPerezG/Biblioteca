@@ -6,15 +6,13 @@ import com.twu.Helpers.Printer;
 import com.twu.biblioteca.BibliotecaManager;
 
 
-public class BookCheckIn extends Command {
+public class UserInformation extends Command {
 
-    public BookCheckIn(String name, Integer id, Printer printer, InputReader inputReader, BibliotecaManager bibliotecaManager,Boolean forAdmin) {
+    public UserInformation(String name, Integer id, Printer printer, InputReader inputReader, BibliotecaManager bibliotecaManager, Boolean forAdmin) {
         super(name, id, printer, inputReader, bibliotecaManager, forAdmin);
     }
 
-    public void executeAction(){
-        bibliotecaManager.manageBookCheckIn(getItemReference());
-    }
+    public void executeAction(){ printer.print(bibliotecaManager.getLoggedUser().getInfo());}
 
     public String getItemReference() {
         printer.printWithColor(Messages.SELECT_MESSAGE, "BLUE");
