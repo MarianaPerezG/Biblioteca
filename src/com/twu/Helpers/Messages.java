@@ -19,5 +19,5 @@ public class Messages {
     public static final String GET_USER_LIBRARYNUMBER = "Library Number:";
     public static final String GET_USER_PASSWORD = "Password:";
     public static final String INCORRECT_LOGIN = "Sorry, the information is not correct. Try Again.";
-
+    public static final String INCORRECT_ITEM = "The item you are trying to return is not registered under your name. Sorry Try again";
 }

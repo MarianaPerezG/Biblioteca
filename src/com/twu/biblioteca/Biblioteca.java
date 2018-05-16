@@ -75,4 +75,7 @@ public class Biblioteca {
     }
 
     public ArrayList<User> getUserList(){ return userList;}
+
+    public ArrayList<Loan> getLoanList() {return loanList;
+    }
 }

@@ -1,15 +1,12 @@
 package com.twu.Models;
-import java.util.Date;
 
 public class Loan {
     private User user;
     private CheckableItem item;
-    private Date date;
 
     public Loan(User user, CheckableItem item){
         this.user = user;
         this.item = item;
-        this.date = new Date();
     }
 
     public User getUser() {
@@ -20,8 +17,14 @@ public class Loan {
         return item;
     }
 
-    public Date getDate() {
-        return date;
+
+    public boolean isLoan(User user, CheckableItem item) {
+
+        if(user == this.getUser() && item == this.getItem()  ){
+            return true;
+        }
+
+        return false;
     }
 
 }

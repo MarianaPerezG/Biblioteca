@@ -18,5 +18,6 @@ public class BookCheckOut extends Command {
     public String getItemReference() {
         printer.printWithColor(Messages.SELECT_MESSAGE, "BLUE");
         return inputReader.getInput();
+
     }
 }

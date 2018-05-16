@@ -36,6 +36,7 @@ public class BibliotecaManager {
     public boolean manageBookCheckOut(String option){
 
         ArrayList<Book> selectedBooks = biblioteca.getBooksMatchingInList(option , true);
+
         if (isReadyToCheck(selectedBooks) && selectedBooks.get(0).isAvailable()){
             checkOut(selectedBooks.get(0));
             return true;
@@ -47,7 +48,8 @@ public class BibliotecaManager {
 
     public boolean manageBookCheckIn(String option){
         ArrayList<Book> selectedBooks = biblioteca.getBooksMatchingInList(option , false);
-        if (isReadyToCheck(selectedBooks) && !selectedBooks.get(0).isAvailable()){
+
+        if (isReadyToCheck(selectedBooks) && !selectedBooks.get(0).isAvailable() && userHasItem(selectedBooks.get(0))){
             checkIn(selectedBooks.get(0));
             return true;
         }
@@ -56,6 +58,7 @@ public class BibliotecaManager {
 
     public boolean manageMovieCheckOut(String option){
         ArrayList<Movie> selectedMovies = biblioteca.getMoviesMatchingInList(option , true);
+
         if (isReadyToCheck(selectedMovies) && selectedMovies.get(0).isAvailable()){
             checkOut(selectedMovies.get(0));
             return true;
@@ -66,9 +69,21 @@ public class BibliotecaManager {
 
     public boolean manageMovieCheckIn(String option){
         ArrayList<Movie> selectedMovies = biblioteca.getMoviesMatchingInList(option , false);
-        if (isReadyToCheck(selectedMovies) && !selectedMovies.get(0).isAvailable()){
+
+        if (isReadyToCheck(selectedMovies) && !selectedMovies.get(0).isAvailable() && userHasItem(selectedMovies.get(0))){
             checkIn(selectedMovies.get(0));
             return true;
+        }
+
+        return false;
+    }
+
+    private boolean userHasItem(CheckableItem item) {
+
+        for (Loan loan:biblioteca.getLoanList()){
+            if (loan.isLoan(this.loggedUser, item)){
+                return true;
+            }
         }
 
         return false;
@@ -78,6 +93,7 @@ public class BibliotecaManager {
 
         if (item.isAvailable()) {
             item.setCheckedOut();
+            createALoan(item);
             printer.printWithColor(Messages.CHECKOUT_INFO + " " + item.getInfo(), "GREEN");
             printer.printWithColor(Messages.CHECKOUT_SUCCESSFUL, "GREEN");
             return true ;
@@ -88,10 +104,15 @@ public class BibliotecaManager {
         }
     }
 
+    private void createALoan(CheckableItem item) {
+        biblioteca.getLoanList().add(new Loan(this.loggedUser, item));
+    }
+
     private boolean checkIn(CheckableItem item) {
 
         if (!item.isAvailable()) {
             item.setCheckedIn();
+            removeLoan(item);
             printer.printWithColor(Messages.RETURN_INFO + " " + item.getInfo(), "GREEN");
             printer.printWithColor(Messages.RETURN_SUCCESSFUL, "GREEN");
             return true;
@@ -99,6 +120,25 @@ public class BibliotecaManager {
         } else {
             printer.printWithColor(Messages.RETURN_UNSUCCESSFUL, "RED");
             return false;
+        }
+
+    }
+
+    private void removeLoan(CheckableItem item) {
+
+        Loan getLoan = null;
+
+        for (Loan loan:biblioteca.getLoanList()){
+            if (loan.isLoan(this.loggedUser, item)){
+                getLoan = loan;
+                break;
+            }
+        }
+
+        try{
+            biblioteca.getLoanList().remove(getLoan);
+        }catch(IndexOutOfBoundsException ex){
+            printer.print(Messages.INCORRECT_ITEM);
         }
 
     }
@@ -143,7 +183,7 @@ public class BibliotecaManager {
         if( userToLogin != null){
 
             if(passwordIsCorrectForUser(password, userToLogin)){
-                assigeUser(userToLogin);
+                assignUser(userToLogin);
                 return true;
             }
 
@@ -152,7 +192,7 @@ public class BibliotecaManager {
         return false;
     }
 
-    private void assigeUser(User userToLogin) {
+    private void assignUser(User userToLogin) {
         this.loggedUser = userToLogin;
     }
 
