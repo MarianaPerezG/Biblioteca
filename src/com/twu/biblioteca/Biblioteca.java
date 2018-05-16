@@ -2,13 +2,16 @@ package com.twu.biblioteca;
 
 import com.twu.Helpers.*;
 import com.twu.Models.*;
+
 import java.util.ArrayList;
 
 public class Biblioteca {
 
     private String name;
     private ArrayList<Book> bookList;
-    public ArrayList<Movie> movieList;
+    private ArrayList<Movie> movieList;
+    private ArrayList<User> userList;
+    private ArrayList<Loan> loanList;
 
     public Biblioteca(String name) {
         this.name = name;
@@ -22,7 +25,7 @@ public class Biblioteca {
 
     }
 
-    public String giveGoodBye() {
+    public String goodByMessage() {
 
         return Messages.GOODBYE_MESSAGE;
     }
@@ -69,4 +72,5 @@ public class Biblioteca {
         return movieList;
     }
 
+    public ArrayList<User> getUserList(){ return userList;}
 }

@@ -2,14 +2,17 @@ package com.twu.biblioteca;
 
 import com.twu.Helpers.*;
 import com.twu.Models.*;
+import com.twu.biblioteca.Biblioteca;
+
 import java.util.ArrayList;
 
-public class BibliotecaSystem {
+public class BibliotecaManager {
 
     private Biblioteca biblioteca;
     private Printer printer;
+    private User loggedUser;
 
-    public BibliotecaSystem(Biblioteca biblioteca, Printer printer ){
+    public BibliotecaManager(Biblioteca biblioteca, Printer printer ){
         this.biblioteca = biblioteca;
         this.printer = printer;
     }
@@ -37,7 +40,7 @@ public class BibliotecaSystem {
             checkOut(selectedBooks.get(0));
             return true;
         }
-        printer.printWithColor(Messages.CHECKOUT_UNSUCCESSFUL, "RED");
+
         return false;
 
     }
@@ -48,7 +51,6 @@ public class BibliotecaSystem {
             checkIn(selectedBooks.get(0));
             return true;
         }
-        printer.printWithColor(Messages.RETURN_UNSUCCESSFUL, "RED");
         return false;
     }
 
@@ -58,7 +60,7 @@ public class BibliotecaSystem {
             checkOut(selectedMovies.get(0));
             return true;
         }
-        printer.printWithColor(Messages.CHECKOUT_UNSUCCESSFUL, "RED");
+
         return false;
     }
 
@@ -68,7 +70,7 @@ public class BibliotecaSystem {
             checkIn(selectedMovies.get(0));
             return true;
         }
-        printer.printWithColor(Messages.RETURN_UNSUCCESSFUL, "RED");
+
         return false;
     }
 
@@ -81,6 +83,7 @@ public class BibliotecaSystem {
             return true ;
 
         } else {
+            printer.printWithColor(Messages.CHECKOUT_UNSUCCESSFUL, "RED");
             return false;
         }
     }
@@ -94,6 +97,7 @@ public class BibliotecaSystem {
             return true;
 
         } else {
+            printer.printWithColor(Messages.RETURN_UNSUCCESSFUL, "RED");
             return false;
         }
 
@@ -101,7 +105,6 @@ public class BibliotecaSystem {
 
     public void printList(ArrayList<? extends CheckableItem> items, Boolean available) {
 
-        System.out.println("HERE");
         for (CheckableItem item : items) {
 
             if (item.isAvailable() == available) {
@@ -109,6 +112,24 @@ public class BibliotecaSystem {
             }
 
         }
+    }
+
+    public void printAllBooksList(){
+        printList(biblioteca.getBookList(), true);
+    }
+
+    public void printAllMoviesList(){
+        printList(biblioteca.getMovieList(), true);
+    }
+
+    public void giveWelcome(){
+        printer.print(biblioteca.welcomeMessage());
+    }
+
+    public void giveGoodBye(){
+        printer.print(biblioteca.goodByMessage());
+        System.exit(0);
+
     }
 
 

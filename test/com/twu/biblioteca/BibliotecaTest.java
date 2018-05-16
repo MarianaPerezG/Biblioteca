@@ -41,7 +41,7 @@ public class BibliotecaTest {
 //        given
         String correctMessage = Messages.GOODBYE_MESSAGE;
 //        when
-        String returnedMessage = biblioteca.giveGoodBye();
+        String returnedMessage = biblioteca.goodByMessage();
 //        then
         assertEquals(returnedMessage,correctMessage );
     }

@@ -1,7 +1,9 @@
 package com.twu.biblioteca;
 
 import com.twu.Helpers.*;
+import com.twu.biblioteca.BibliotecaManager;
 import com.twu.Models.*;
+import com.twu.biblioteca.Biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,10 +13,10 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.*;
 
-public class BibliotecaSystemTest {
+public class BibliotecaManagerTest {
 
     public Biblioteca biblioteca;
-    public BibliotecaSystem  bibliotecaSys;
+    public BibliotecaManager bibliotecaSys;
     public Book book;
     public Movie movie;
     public Printer printer;
@@ -27,7 +29,7 @@ public class BibliotecaSystemTest {
 
         printer = new Printer();
         biblioteca = new Biblioteca("Test");
-        bibliotecaSys = new BibliotecaSystem(biblioteca, printer);
+        bibliotecaSys = new BibliotecaManager(biblioteca, printer);
 
     }
 
@@ -247,20 +249,6 @@ public class BibliotecaSystemTest {
 //        then
         assertTrue(output.toString().contains(correctMessage));
 
-    }
-
-    @Test
-    public void shouldPrintUnsuccessfulMessageWhenFailedCheckOutBecauseUnavailable(){
-        //        given
-        bibliotecaWithBook();
-//        when
-        book.setCheckedOut();
-        String nameOfBook = book.getName();
-        OutputStream output = theOutput();
-        bibliotecaSys.manageBookCheckOut(nameOfBook);
-        String correctMessage = Messages.CHECKOUT_UNSUCCESSFUL;
-//        then
-        assertTrue(output.toString().contains(correctMessage));
     }
 
 }

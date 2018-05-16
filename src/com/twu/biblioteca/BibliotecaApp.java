@@ -1,14 +1,13 @@
 package com.twu.biblioteca;
 
 import com.twu.Helpers.*;
+import com.twu.Models.*;
 
-import com.twu.Models.Book;
-import com.twu.Models.Movie;
 
 public class BibliotecaApp {
 
     private static Biblioteca biblioteca;
-    private static BibliotecaSystem bibliotecaSys;
+    private static BibliotecaManager bibliotecaManager;
     private static InputReader inputReader;
     private static Menu menu;
     private static Printer printer;
@@ -16,11 +15,13 @@ public class BibliotecaApp {
     public static void main(String[] args) {
 
         printer = new Printer();
-        menu = new Menu();
         inputReader = new InputReader(printer);
 
         biblioteca = new Biblioteca("The Bangalore Public Library");
-        bibliotecaSys = new BibliotecaSystem(biblioteca, printer);
+        bibliotecaManager = new BibliotecaManager(biblioteca, printer);
+
+        menu = new Menu(bibliotecaManager, inputReader);
+
         addDB(biblioteca);
         init();
 
@@ -28,53 +29,20 @@ public class BibliotecaApp {
 
     public static void init(){
 
-        printer.print(biblioteca.welcomeMessage());
+        bibliotecaManager.giveWelcome();
 
         while (true) {
             menu.printMenu();
             String input = inputReader.getInput();
-            manageOption(input);
-        }
-    }
-
-    public static void manageOption(String input){
-
-        try{
-            int option = Integer.parseInt(input);
-            switch(option){
-                case 1:
-                    bibliotecaSys.printList(biblioteca.getBookList(), true);
-                    break;
-                case 2:
-                    bibliotecaSys.manageBookCheckOut(getItemReference());
-                    break;
-                case 3:
-                    bibliotecaSys.manageBookCheckIn(getItemReference());
-                    break;
-                case 4:
-                    bibliotecaSys.printList(biblioteca.getMovieList(), true);
-                    break;
-                case 5:
-                    bibliotecaSys.manageMovieCheckOut(getItemReference());
-                    break;
-                case 6:
-                    bibliotecaSys.manageMovieCheckIn(getItemReference());
-                    break;
-                case 7:
-                    printer.print(biblioteca.giveGoodBye());
-                    System.exit(0);
+            try{
+                menu.comandoLines.get(input).executeAction();
             }
-
-        }catch (NumberFormatException  e){
-            printer.print(Messages.INVALID_MENU_MESSAGE);
+            catch (NullPointerException e){
+                printer.print(Messages.INVALID_MENU_MESSAGE);
+            }
         }
-
     }
 
-    public static String getItemReference() {
-        printer.printWithColor(Messages.SELECT_MESSAGE, "BLUE");
-        return inputReader.getInput();
-    }
 
     public static void addDB(Biblioteca biblioteca){
 
@@ -83,10 +51,13 @@ public class BibliotecaApp {
         biblioteca.getBookList().add(new Book("Something Random", "Kylie Jenner", 2018));
         biblioteca.getBookList().add(new Book("Liv Tyler Bio ", "Liv Tyler", 1980));
 
-        biblioteca.movieList.add(new Movie("50 first Dates", "Peter Segal", 2004, 5.0f));
-        biblioteca.movieList.add(new Movie("Random", "Mariana Perez", 2018, 2.0f));
+        biblioteca.getMovieList().add(new Movie("50 first Dates", "Peter Segal", 2004, 5.0f));
+        biblioteca.getMovieList().add(new Movie("Random", "Mariana Perez", 2018, 2.0f));
+
+//        biblioteca.getUserList().add(new User("Mariana", "Perez","123-123","password", "mperez@prueba.com", "555-55-55", false ));
+//        biblioteca.getUserList().add(new User("Librarian", "User","111-111","admin", "librarian@prueba.com", "666-55-55", true ));
+
 
     }
-
 
 }
