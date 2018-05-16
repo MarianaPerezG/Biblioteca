@@ -10,6 +10,6 @@ public class PrintBookList extends Command {
     }
 
     public void executeAction(){
-        bibliotecaManager.printAllBooksList();
+        bibliotecaManager.showAllBooksList();
     }
 }

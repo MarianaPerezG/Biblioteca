@@ -12,9 +12,14 @@ public class BibliotecaManager {
     private Printer printer;
     private User loggedUser;
 
+
     public BibliotecaManager(Biblioteca biblioteca, Printer printer ){
         this.biblioteca = biblioteca;
         this.printer = printer;
+    }
+
+    public Biblioteca getBiblioteca() {
+        return biblioteca;
     }
 
     private boolean isReadyToCheck(ArrayList<? extends CheckableItem> items){
@@ -26,7 +31,7 @@ public class BibliotecaManager {
 
         }else{
             printer.printWithColor(Messages.SELECT_OPTION, "BLUE");
-            printList(items, true);
+            printer.printList(items, true);
         }
 
         return false;
@@ -143,23 +148,12 @@ public class BibliotecaManager {
 
     }
 
-    public void printList(ArrayList<? extends CheckableItem> items, Boolean available) {
-
-        for (CheckableItem item : items) {
-
-            if (item.isAvailable() == available) {
-                printer.print(item.getInfo());
-            }
-
-        }
+    public void showAllBooksList(){
+        printer.printList(biblioteca.getBookList(), true);
     }
 
-    public void printAllBooksList(){
-        printList(biblioteca.getBookList(), true);
-    }
-
-    public void printAllMoviesList(){
-        printList(biblioteca.getMovieList(), true);
+    public void showAllMoviesList(){
+        printer.printList(biblioteca.getMovieList(), true);
     }
 
     public void giveWelcome(){
@@ -172,43 +166,12 @@ public class BibliotecaManager {
 
     }
 
+    public void assignUser(User userToLogin) {
+        this.loggedUser = userToLogin;
+    }
+
     public User getLoggedUser() {
         return loggedUser;
     }
 
-    public boolean giveAccess(String libraryNumber, String password) {
-
-        User userToLogin = getUserWithLibraryNumber(libraryNumber);
-
-        if( userToLogin != null){
-
-            if(passwordIsCorrectForUser(password, userToLogin)){
-                assignUser(userToLogin);
-                return true;
-            }
-
-        }
-
-        return false;
-    }
-
-    private void assignUser(User userToLogin) {
-        this.loggedUser = userToLogin;
-    }
-
-    public boolean passwordIsCorrectForUser(String password, User userToLogin) {
-
-        return userToLogin.isPasswordCorrect(password);
-    }
-
-    public User getUserWithLibraryNumber(String libraryNumber) {
-
-        for(User user:biblioteca.getUserList()){
-            if(user.getLibraryNumber().equals(libraryNumber)){
-                return user;
-            }
-        }
-
-        return null;
-    }
 }

@@ -8,6 +8,7 @@ public class BibliotecaApp {
 
     private static Biblioteca biblioteca;
     private static BibliotecaManager bibliotecaManager;
+    private static Authenticator authenticator;
     private static InputReader inputReader;
     private static Menu menu;
     private static Printer printer;
@@ -20,6 +21,7 @@ public class BibliotecaApp {
         biblioteca = new Biblioteca("The Bangalore Public Library");
         bibliotecaManager = new BibliotecaManager(biblioteca, printer);
         menu = new Menu(bibliotecaManager, inputReader);
+        authenticator = new Authenticator(bibliotecaManager);
 
         addDB(biblioteca);
 
@@ -38,7 +40,7 @@ public class BibliotecaApp {
             printer.print(Messages.GET_USER_PASSWORD);
             String password = inputReader.getInput();
 
-            accessGranted = bibliotecaManager.giveAccess(libraryNumber, password);
+            accessGranted = authenticator.giveAccess(libraryNumber, password);
 
             if(accessGranted){
                 init();

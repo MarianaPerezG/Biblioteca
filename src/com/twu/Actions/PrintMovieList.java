@@ -11,6 +11,6 @@ public class PrintMovieList extends Command {
     }
 
     public void executeAction(){
-        bibliotecaManager.printAllMoviesList();
+        bibliotecaManager.showAllMoviesList();
     }
 }

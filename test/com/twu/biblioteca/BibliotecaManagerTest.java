@@ -2,7 +2,6 @@ package com.twu.biblioteca;
 
 import com.twu.Helpers.*;
 import com.twu.Models.*;
-import static org.hamcrest.CoreMatchers.instanceOf;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,9 +18,6 @@ public class BibliotecaManagerTest {
     public Book book;
     public Movie movie;
     public Printer printer;
-    public User user;
-    public InputReader inputreader;
-    public String input;
     public OutputStream output;
 
     @Before
@@ -44,10 +40,6 @@ public class BibliotecaManagerTest {
         biblioteca.getMovieList().add(movie);
     }
 
-    public void bibliotecaWithUser(){
-        user = new User("Mariana", "Perez","123-123","password", "mperez@prueba.com", "555-55-55", false );
-        biblioteca.getUserList().add(user);
-    }
 
     public OutputStream theOutput(){
         output = new ByteArrayOutputStream();
@@ -235,7 +227,7 @@ public class BibliotecaManagerTest {
         biblioteca.getBookList().add(new Book("Book for testing", "Mariana Perez", 1998));
 //        when
         OutputStream output = theOutput();
-        bibliotecaSys.printList(biblioteca.getBookList(), true);
+        printer.printList(biblioteca.getBookList(), true);
         String correctString = "Book for testing by Mariana Perez. Year of Publish: 1998";
 //        then
         assertTrue(output.toString().contains(correctString));
@@ -256,57 +248,6 @@ public class BibliotecaManagerTest {
 
     }
 
-    @Test
-    public void shouldAllowLogInOfUserIfUserExistAndThePasswordIsCorrect(){
-//        given
-        bibliotecaWithUser();
-//        when
-        String libraryNumberCollected = "123-123";
-        String passwordCollected = "password";
-        boolean returned = bibliotecaSys.giveAccess(libraryNumberCollected, passwordCollected );
-//        then
-        assertTrue(returned);
-    }
-
-    @Test
-    public void shouldReturnUserIfLibraryNumberExist(){
-//        given
-        bibliotecaWithUser();
-//        when
-        String libraryNumberCollected = "123-123";
-        User returned = bibliotecaSys.getUserWithLibraryNumber(libraryNumberCollected);
-//        then
-        assertThat(returned, instanceOf(User.class));
-
-    }
-
-    @Test
-    public void shouldReturnTrueIfPasswordIsCorrect(){
-//        given
-        bibliotecaWithUser();
-//        when
-        String password = "password";
-        boolean returned = bibliotecaSys.passwordIsCorrectForUser(password, user);
-//        then
-        assertTrue(returned);
-
-    }
-
-    @Test
-    public void shouldAssignTheCurrentUserCorrectly(){
-//        given
-        bibliotecaWithUser();
-//        when
-        String libraryNumberCollected = "123-123";
-        String passwordCollected = "password";
-        boolean returned = bibliotecaSys.giveAccess(libraryNumberCollected, passwordCollected );
-        User correctUserLogedIn = user;
-        User userAssignedToManager = bibliotecaSys.getLoggedUser();
-//        then
-        assertTrue(returned);
-        assertEquals(correctUserLogedIn,userAssignedToManager);
-
-    }
 
 
 }

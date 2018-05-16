@@ -1,5 +1,9 @@
 package com.twu.Helpers;
 
+import com.twu.Models.CheckableItem;
+
+import java.util.ArrayList;
+
 public class Printer {
 
     public static final String ANSI_GREEN = "\u001B[32m";
@@ -23,6 +27,17 @@ public class Printer {
 
     public void print(String toPrint){
         System.out.println(toPrint);
+    }
+
+    public void printList(ArrayList<? extends CheckableItem> items, Boolean available) {
+
+        for (CheckableItem item : items) {
+
+            if (item.isAvailable() == available) {
+                print(item.getInfo());
+            }
+
+        }
     }
 
 
